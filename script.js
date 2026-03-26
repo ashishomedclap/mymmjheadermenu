@@ -39,7 +39,10 @@ function initMobileMenu() {
   const items = document.querySelectorAll('.mmj-mob-item');
 
   items.forEach((item) => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      /* #4 — guard: don't toggle if a link inside was clicked */
+      if (e.target.tagName === 'A') return;
+
       const targetId = item.dataset.toggle;
       const sub = document.getElementById(targetId);
       if (!sub) return;
@@ -60,7 +63,7 @@ function initMobileMenu() {
 }
 
 
-/* scroll header
+/* scroll header — throttled with rAF
 ============================================================= */
 function initScrollHeader() {
   const header = document.querySelector('.mmj-header');
@@ -68,14 +71,24 @@ function initScrollHeader() {
 
   if (!header || !wrap) return;
 
+  let ticking = false;
+
   function onScroll() {
-    const y = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
 
-    header.classList.toggle('scrolled', y > 10);
-    wrap.classList.toggle('scrolled', y > 10);
+        header.classList.toggle('scrolled', y > 10);
+        wrap.classList.toggle('scrolled', y > 10);
 
-    header.classList.toggle('scrolled-deep', y > 300);
-    wrap.classList.toggle('scrolled-deep', y > 300);
+        header.classList.toggle('scrolled-deep', y > 300);
+        wrap.classList.toggle('scrolled-deep', y > 300);
+
+        ticking = false;
+      });
+
+      ticking = true;
+    }
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -83,21 +96,76 @@ function initScrollHeader() {
 }
 
 
-/* mega menu (state selector)
+/* mega menu — scalable, keyboard accessible
 ============================================================= */
 function initMegaMenu() {
-  const trigger  = document.querySelector('.has-dropdown a');
-  const megaMenu = document.querySelector('.mmj-mega-menu');
+  /* loop all dropdowns, not just first */
+  const triggers = document.querySelectorAll('.has-dropdown > a');
 
-  if (!trigger || !megaMenu) return;
+  triggers.forEach((trigger) => {
+    const megaMenu = document.getElementById(trigger.dataset.target);
+    if (!megaMenu) return;
 
-  let closeTimer;
+    let closeTimer;
 
-  const open  = () => { clearTimeout(closeTimer); megaMenu.classList.add('show'); trigger.setAttribute('aria-expanded', 'true'); };
-  const close = () => { closeTimer = setTimeout(() => { megaMenu.classList.remove('show'); trigger.setAttribute('aria-expanded', 'false'); }, 150); };
+    const open = () => {
+      clearTimeout(closeTimer);
+      megaMenu.classList.add('show');
+      trigger.setAttribute('aria-expanded', 'true');
+    };
 
-  trigger.addEventListener('mouseenter', open);
-  trigger.parentElement.addEventListener('mouseleave', close);
-  megaMenu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
-  megaMenu.addEventListener('mouseleave', () => { megaMenu.classList.remove('show'); trigger.setAttribute('aria-expanded', 'false'); });
+    const close = () => {
+      closeTimer = setTimeout(() => {
+        megaMenu.classList.remove('show');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    };
+
+    /* mouse */
+    trigger.addEventListener('mouseenter', open);
+
+    /* use .closest() for stable mouseleave — avoids fast-cursor flicker */
+    const parent = trigger.closest('.has-dropdown');
+    parent.addEventListener('mouseleave', close);
+
+    megaMenu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+    megaMenu.addEventListener('mouseleave', close);
+
+    /* keyboard: focus / blur */
+    trigger.addEventListener('focus', open);
+    trigger.addEventListener('blur', close);
+
+    /* keyboard: Enter / Space toggles */
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        megaMenu.classList.toggle('show');
+        trigger.setAttribute('aria-expanded', megaMenu.classList.contains('show'));
+      }
+    });
+  });
+
+  /* Escape key closes all open mega menus */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.mmj-mega-menu.show').forEach((menu) => {
+        menu.classList.remove('show');
+      });
+      document.querySelectorAll('.has-dropdown > a').forEach((t) => {
+        t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  /* click outside closes all open mega menus */
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('.mmj-mega-menu.show').forEach((menu) => {
+      const wrapper = menu.closest('.mmj-states-menu-wrapper');
+      if (wrapper && !wrapper.contains(e.target)) {
+        menu.classList.remove('show');
+        const t = wrapper.querySelector('.has-dropdown > a');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 }
