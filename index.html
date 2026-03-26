@@ -1,589 +1,377 @@
 <link rel="stylesheet" href="style.css" />
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 
-<!-- ============================================================
-                   MARKUP
-                   ============================================================ -->
+<!-- header wrapper -->
 <div class="mmj-header-wrap">
-  <!-- TOP BAR -->
+
+  <!-- top bar -->
   <div class="mmj-top-bar">
-    <div class="mmj_top_bar_left flex_center_10">
-      <p>Save 10% on Evaluation • Licensed & Secure</p>
-      <br />
-      <button class="offer-pill">Grab Now</button>
+    <div class="mmj-top-bar-left flex-center-10">
+      <p>Save 10% on Evaluation • Licensed &amp; Secure</p>
+      <button class="mmj-offer-pill">Grab Now</button>
     </div>
-    <div class="mmj_top_bar_right">
+    <div class="mmj-top-bar-right">
       <a href="mailto:support@mymmdoctor.com">✉ support@mymmdoctor.com</a>
       <a href="tel:8882818758">📞 (888)-281-8758</a>
     </div>
   </div>
 
-  <!-- MAIN HEADER -->
+  <!-- main header -->
   <header class="mmj-header">
-    <div class="top_bar_mobile_only promo-banner">
-      <marquee class="promo-text">St. Patrick's Day Special: 30% Off!</marquee>
-      <button class="promo-btn">Strike Gold</button>
+
+    <!-- mobile promo banner -->
+    <div class="mmj-promo-banner top-bar-mobile-only">
+      <marquee class="mmj-promo-text">St. Patrick's Day Special: 30% Off!</marquee>
+      <button class="mmj-promo-btn">Strike Gold</button>
     </div>
+
     <div class="mmj-inner">
-      <!-- LOGO -->
+
+      <!-- logo -->
       <a href="https://mymmjdoctor.com" class="mmj-logo">
-        <img src="https://mymmjdoctor.com/wp-content/uploads/2025/10/logo.webp" alt="main logo" />
+        <img
+          src="https://mymmjdoctor.com/wp-content/uploads/2025/10/logo.webp"
+          alt="MyMMJ Doctor logo"
+          width="100"
+          height="auto"
+        />
       </a>
 
-      <!-- NAV -->
-      <nav class="mmj-nav">
+      <!-- main navigation -->
+      <nav class="mmj-nav" aria-label="Main navigation">
         <ul class="mmj-nav-list">
-          <!-- GET MY CARD -->
+
+          <!-- get my card -->
           <li>
-            <a class="mmj-nav-link">
+            <a
+              class="mmj-nav-link"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              tabindex="0"
+            >
               Get My Card
-              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </a>
-            <div class="mmj-mega cols-2">
+            <div class="mmj-mega cols-2" role="region">
               <div class="mmj-col">
-                <a class="mmj-item" href="https://mymmjdoctor.com/tools/do-i-qualify/">
-                  <div class="mmj-item-icon">🚀</div>
+                <a class="mmj-item" href="https://mymmjdoctor.com/#get-your-card-atf">
+                  <div class="mmj-item-icon" aria-hidden="true">🚀</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Start Evaluation</div>
-                    <div class="mmj-desc">
-                      Check if you meet the requirements for a medical marijuana
-                      card.
-                    </div>
+                    <div class="mmj-desc">Check if you meet the requirements for a medical marijuana card.</div>
+                  </div>
+                </a>
+                <a class="mmj-item" href="https://mymmjdoctor.com/card-renewal/">
+                  <div class="mmj-item-icon" aria-hidden="true">♻️</div>
+                  <div class="mmj-item-text">
+                    <div class="mmj-title">Card Renewal</div>
+                    <div class="mmj-desc">Renew your existing medical marijuana card quickly and easily.</div>
+                  </div>
+                </a>
+                <a class="mmj-item" href="https://mymmjdoctor.com/tools/do-i-qualify/">
+                  <div class="mmj-item-icon" aria-hidden="true">❓</div>
+                  <div class="mmj-item-text">
+                    <div class="mmj-title">Do I Qualify</div>
+                    <div class="mmj-desc">Find out if your condition qualifies for medical cannabis.</div>
+                  </div>
+                </a>
+                <a class="mmj-item" href="https://mymmjdoctor.com/how-it-works/">
+                  <div class="mmj-item-icon" aria-hidden="true">🛠️</div>
+                  <div class="mmj-item-text">
+                    <div class="mmj-title">How It Works</div>
+                    <div class="mmj-desc">Step-by-step guide to getting your card with us.</div>
                   </div>
                 </a>
                 <a class="mmj-item" href="https://mymmjdoctor.com/medical-conditions/">
-                  <div class="mmj-item-icon">♻️</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Card Renewal</div>
-                    <div class="mmj-desc">
-                      Discover the health conditions that may qualify you for
-                      medical cannabis.
-                    </div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/locations/">
-                  <div class="mmj-item-icon">❓</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Do I Qualify</div>
-                    <div class="mmj-desc">
-                      Find out where we provide services and get certified near
-                      you.
-                    </div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/locations/">
-                  <div class="mmj-item-icon">🛠️</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">How It Works</div>
-                    <div class="mmj-desc">
-                      Find out where we provide services and get certified near
-                      you.
-                    </div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/locations/">
-                  <div class="mmj-item-icon">📋</div>
+                  <div class="mmj-item-icon" aria-hidden="true">📋</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Conditions</div>
-                    <div class="mmj-desc">
-                      Find out where we provide services and get certified near
-                      you.
-                    </div>
+                    <div class="mmj-desc">Discover which health conditions may qualify you.</div>
                   </div>
                 </a>
               </div>
             </div>
           </li>
-          <!-- CANNABIS CARE & EDUCATION -->
+
+          <!-- cannabis guides -->
           <li>
-            <a class="mmj-nav-link">
+            <a
+              class="mmj-nav-link"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              tabindex="0"
+            >
               Cannabis Guides
-              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </a>
-            <div class="mmj-mega cols-2">
+            <div class="mmj-mega cols-2" role="region">
               <div class="mmj-col">
                 <a class="mmj-item" href="https://mymmjdoctor.com/blog/">
-                  <div class="mmj-item-icon">📰</div>
+                  <div class="mmj-item-icon" aria-hidden="true">📰</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Blog</div>
-                    <div class="mmj-desc">Industry updates & tips</div>
+                    <div class="mmj-desc">Industry updates &amp; tips</div>
                   </div>
                 </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/blog/">
-                  <div class="mmj-item-icon">🧰</div>
+                <a class="mmj-item" href="https://mymmjdoctor.com/tools/">
+                  <div class="mmj-item-icon" aria-hidden="true">🧰</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Tools</div>
-                    <div class="mmj-desc">Industry updates & tips</div>
+                    <div class="mmj-desc">Handy calculators and resources</div>
                   </div>
                 </a>
                 <a class="mmj-item" href="https://mymmjdoctor.com/tools/medical-marijuana-tax-calculator/">
-                  <div class="mmj-item-icon">🧮</div>
+                  <div class="mmj-item-icon" aria-hidden="true">🧮</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Tax Calculator</div>
-                    <div class="mmj-desc">Learn about Tax Calculation</div>
+                    <div class="mmj-desc">Estimate your medical marijuana tax savings</div>
                   </div>
                 </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/blog/">
-                  <div class="mmj-item-icon">⚖️</div>
+                <a class="mmj-item" href="https://mymmjdoctor.com/legality-checker/">
+                  <div class="mmj-item-icon" aria-hidden="true">⚖️</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Legality Checker</div>
-                    <div class="mmj-desc">Industry updates & tips</div>
+                    <div class="mmj-desc">Check cannabis laws in your state</div>
                   </div>
                 </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/blog/">
-                  <div class="mmj-item-icon">💊</div>
+                <a class="mmj-item" href="https://mymmjdoctor.com/tools/edible-dosage-calculator/">
+                  <div class="mmj-item-icon" aria-hidden="true">💊</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Edible Dosage Calculator</div>
-                    <div class="mmj-desc">Industry updates & tips</div>
+                    <div class="mmj-desc">Find the right dose for your needs</div>
                   </div>
                 </a>
               </div>
             </div>
           </li>
-          <!-- ABOUT -->
+
+          <!-- about -->
           <li>
-            <a class="mmj-nav-link">
+            <a
+              class="mmj-nav-link"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              tabindex="0"
+            >
               About
-              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </a>
-            <div class="mmj-mega cols-2">
+            <div class="mmj-mega cols-2" role="region">
               <div class="mmj-col">
-                <a class="mmj-item"
-                  href="https://mymmjdoctor.com/about-us/?_gl=1*6en9xq*_gcl_au*MTQyNjg0OTE0MS4xNzczMjg2NTk1*_ga*MTIxMTQ5NjQ4OS4xNzczMjg2NTk2*_ga_P6Y1NN8DPJ*czE3NzMyODY1OTYkbzEkZzEkdDE3NzMyODc3MjEkajUzJGwwJGgw">
-                  <div class="mmj-item-icon">📞</div>
+                <a class="mmj-item" href="https://mymmjdoctor.com/about-us/">
+                  <div class="mmj-item-icon" aria-hidden="true">🌿</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">About Us</div>
-                    <div class="mmj-desc">
-                      Discover our mission, team, and commitment to patients.
-                    </div>
+                    <div class="mmj-desc">Discover our mission, team, and commitment to patients.</div>
                   </div>
                 </a>
                 <a class="mmj-item" href="https://mymmjdoctor.com/reviews/">
-                  <div class="mmj-item-icon">🤝</div>
+                  <div class="mmj-item-icon" aria-hidden="true">🤝</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Reviews</div>
-                    <div class="mmj-desc">
-                      See what patients are saying about their experience with
-                      us.
-                    </div>
+                    <div class="mmj-desc">See what patients are saying about their experience.</div>
                   </div>
                 </a>
                 <a class="mmj-item" href="https://mymmjdoctor.com/contact-us/">
-                  <div class="mmj-item-icon">📰</div>
+                  <div class="mmj-item-icon" aria-hidden="true">📞</div>
                   <div class="mmj-item-text">
                     <div class="mmj-title">Contact Us</div>
-                    <div class="mmj-desc">
-                      Get in touch with our team for help or questions.
-                    </div>
+                    <div class="mmj-desc">Get in touch with our team for help or questions.</div>
                   </div>
                 </a>
               </div>
             </div>
           </li>
+
         </ul>
       </nav>
-      <div class="flex_center_10">
+
+      <!-- cta -->
+      <div class="flex-center-10">
         <div class="d-flex-center">
-          <!-- Hidden icons (appear when scrolling) -->
-          <div class="mmj-header-icons">
-            <a href="mailto:support@mymmjdoctor.com" class="mmj-hicon">✉</a>
-            <a href="tel:8882818758" class="mmj-hicon">📞</a>
+
+          <!-- header icons (visible on scroll) -->
+          <div class="mmj-header-icons" aria-hidden="true">
+            <a href="mailto:support@mymmjdoctor.com" class="mmj-hicon" title="Email us">✉</a>
+            <a href="tel:8882818758" class="mmj-hicon" title="Call us">📞</a>
           </div>
-          <!-- CTA -->
+
           <div class="mmj-cta">
-            <div class="states-menu-wrapper">
-              <!-- Trigger -->
-              <div class="menu">
+
+            <!-- state selector -->
+            <div class="mmj-states-menu-wrapper">
+              <div class="mmj-menu">
                 <div class="has-dropdown">
-                  <a class="mmj-btn-login" href="#" data-target="states">
+                  <a
+                    class="mmj-btn-login"
+                    href="javascript:void(0)"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-target="states"
+                  >
                     SELECT STATE
-                    <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                       <path d="M6 9l6 6 6-6" />
                     </svg>
                   </a>
                 </div>
               </div>
 
-              <!-- Dropdown -->
-              <div class="mega-menu">
-                <!-- States -->
-                <div class="mega-content" id="states">
-                  <div class="mega-column">
-                    <ul>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-arizona/">
-                          Arizona
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-arkansas/">
-                          Arkansas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-california/">
-                          California
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-connecticut/">
-                          Connecticut
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-delaware/">
-                          Delaware
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-florida/">
-                          Florida
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-georgia/">
-                          Georgia
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-illinois/">
-                          Illinois
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-iowa/">
-                          Iowa
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-louisiana/">
-                          Louisiana
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-maine/">
-                          Maine
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-maryland/">
-                          Maryland
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-massachusetts/">
-                          Massachusetts
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-michigan/">
-                          Michigan
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-minnesota/">
-                          Minnesota
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-missouri/">
-                          Missouri
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-montana/">
-                          Montana
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-nevada/">
-                          Nevada
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-new-jersey/">
-                          New Jersey
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-new-mexico/">
-                          New Mexico
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-new-york/">
-                          New York
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-north-dakota/">
-                          North Dakota
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-ohio/">
-                          Ohio
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-oklahoma/">
-                          Oklahoma
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/">
-                          Pennsylvania
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-texas/">
-                          Texas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-vermont/">
-                          Vermont
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-virginia/">
-                          Virginia
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-washington-dc/">
-                          Washington DC
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://mymmjdoctor.com/medical-marijuana-card-west-virginia/">
-                          West Virginia
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+              <!-- state dropdown -->
+              <div class="mmj-mega-menu" id="states" role="listbox" aria-label="Select your state">
+                <div class="mmj-mega-column">
+                  <ul>
+                    <!-- states list (desktop) -->
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arizona/">Arizona</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arkansas/">Arkansas</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-california/">California</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-connecticut/">Connecticut</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-delaware/">Delaware</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-florida/">Florida</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-georgia/">Georgia</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-illinois/">Illinois</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-iowa/">Iowa</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-louisiana/">Louisiana</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maine/">Maine</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maryland/">Maryland</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-massachusetts/">Massachusetts</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-michigan/">Michigan</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-minnesota/">Minnesota</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-missouri/">Missouri</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-montana/">Montana</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-nevada/">Nevada</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-jersey/">New Jersey</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-mexico/">New Mexico</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-york/">New York</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-north-dakota/">North Dakota</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-ohio/">Ohio</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-oklahoma/">Oklahoma</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/">Pennsylvania</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-texas/">Texas</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-vermont/">Vermont</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-virginia/">Virginia</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-washington-dc/">Washington DC</a></li>
+                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-west-virginia/">West Virginia</a></li>
+                  </ul>
                 </div>
               </div>
             </div>
+
             <a href="https://mymmjdoctor.com/#get-your-card-atf" class="mmj-btn-book">Book Now</a>
           </div>
         </div>
-        <!-- HAMBURGER -->
-        <button class="mmj-hamburger" id="mmjHam" aria-label="Menu">
-          <span class="menu-icon">☰</span>
-          <span class="close-icon">✕</span>
+
+        <!-- hamburger -->
+        <button
+          class="mmj-hamburger"
+          id="mmjHam"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mmjMob"
+        >
+          <span class="menu-icon" aria-hidden="true">☰</span>
+          <span class="close-icon" aria-hidden="true">✕</span>
         </button>
       </div>
+
     </div>
     <!-- /mmj-inner -->
-    <!-- MOBILE DRAWER -->
-    <div class="mmj-mobile-nav" id="mmjMob">
-      <div class="mmj-mob-item" onclick="mmjToggle(this)">
-        Select State <span class="mmj-mchev">▾</span>
+
+    <!-- mobile navigation -->
+    <aside class="mmj-mobile-nav" id="mmjMob" aria-label="Mobile navigation" aria-hidden="true">
+
+      <div class="mmj-mob-item" data-toggle="mob-states">
+        Select State <span class="mmj-mchev" aria-hidden="true">▾</span>
       </div>
-      <div class="mmj-mob-sub">
-        <div class="mega-column mobile-states">
+      <div class="mmj-mob-sub" id="mob-states">
+        <div class="mmj-mega-column mmj-mobile-states">
           <ul>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-arizona/">
-                Arizona
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-arkansas/">
-                Arkansas
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-california/">
-                California
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-connecticut/">
-                Connecticut
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-delaware/">
-                Delaware
-              </a>
-            </li>
-
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-florida/">
-                Florida
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-georgia/">
-                Georgia
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-illinois/">
-                Illinois
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-iowa/">
-                Iowa
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-louisiana/">
-                Louisiana
-              </a>
-            </li>
-
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-maine/">
-                Maine
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-maryland/">
-                Maryland
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-massachusetts/">
-                Massachusetts
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-michigan/">
-                Michigan
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-minnesota/">
-                Minnesota
-              </a>
-            </li>
-
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-missouri/">
-                Missouri
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-montana/">
-                Montana
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-nevada/">
-                Nevada
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-new-jersey/">
-                New Jersey
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-new-mexico/">
-                New Mexico
-              </a>
-            </li>
-
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-new-york/">
-                New York
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-north-dakota/">
-                North Dakota
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-ohio/">
-                Ohio
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-oklahoma/">
-                Oklahoma
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/">
-                Pennsylvania
-              </a>
-            </li>
-
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-texas/">
-                Texas
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-vermont/">
-                Vermont
-              </a>
-            </li>
-
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-virginia/">
-                Virginia
-              </a>
-            </li>
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-washington-dc/">
-                Washington DC
-              </a>
-            </li>
-
-            <li>
-              <a href="https://mymmjdoctor.com/medical-marijuana-card-west-virginia/">
-                West Virginia
-              </a>
-            </li>
+            <!-- states list (mobile duplicate - keep in sync with desktop) -->
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arizona/">Arizona</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arkansas/">Arkansas</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-california/">California</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-connecticut/">Connecticut</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-delaware/">Delaware</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-florida/">Florida</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-georgia/">Georgia</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-illinois/">Illinois</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-iowa/">Iowa</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-louisiana/">Louisiana</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maine/">Maine</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maryland/">Maryland</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-massachusetts/">Massachusetts</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-michigan/">Michigan</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-minnesota/">Minnesota</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-missouri/">Missouri</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-montana/">Montana</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-nevada/">Nevada</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-jersey/">New Jersey</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-mexico/">New Mexico</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-york/">New York</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-north-dakota/">North Dakota</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-ohio/">Ohio</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-oklahoma/">Oklahoma</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/">Pennsylvania</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-texas/">Texas</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-vermont/">Vermont</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-virginia/">Virginia</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-washington-dc/">Washington DC</a></li>
+            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-west-virginia/">West Virginia</a></li>
           </ul>
         </div>
       </div>
-      <div class="mmj-mob-item" onclick="mmjToggle(this)">
-        Get My Card <span class="mmj-mchev">▾</span>
+
+      <div class="mmj-mob-item" data-toggle="mob-card">
+        Get My Card <span class="mmj-mchev" aria-hidden="true">▾</span>
       </div>
-      <div class="mmj-mob-sub">
-        <a href="https://mymmjdoctor.com/#get-your-card-atf">Start Evaluation</a><a href="#">Card Renewal</a>
-        <a href="https://mymmjdoctor.com/tools/do-i-qualify/">Do I Qualify</a><a href="#">How It Works</a><a
-          href="#">Conditions</a>
+      <div class="mmj-mob-sub" id="mob-card">
+        <a href="https://mymmjdoctor.com/#get-your-card-atf">Start Evaluation</a>
+        <a href="https://mymmjdoctor.com/card-renewal/">Card Renewal</a>
+        <a href="https://mymmjdoctor.com/tools/do-i-qualify/">Do I Qualify</a>
+        <a href="https://mymmjdoctor.com/how-it-works/">How It Works</a>
+        <a href="https://mymmjdoctor.com/medical-conditions/">Conditions</a>
       </div>
-      <div class="mmj-mob-item" onclick="mmjToggle(this)">
-        Cannabis Guides <span class="mmj-mchev">▾</span>
+
+      <div class="mmj-mob-item" data-toggle="mob-guides">
+        Cannabis Guides <span class="mmj-mchev" aria-hidden="true">▾</span>
       </div>
-      <div class="mmj-mob-sub">
-        <a href="https://mymmjdoctor.com/blog/">Blog</a><a href="#">Tools</a>
-        <a href="https://mymmjdoctor.com/tools/medical-marijuana-tax-calculator/">Tax Calculator</a><a href="#">Legality
-          Checker</a>
+      <div class="mmj-mob-sub" id="mob-guides">
+        <a href="https://mymmjdoctor.com/blog/">Blog</a>
+        <a href="https://mymmjdoctor.com/tools/">Tools</a>
+        <a href="https://mymmjdoctor.com/tools/medical-marijuana-tax-calculator/">Tax Calculator</a>
+        <a href="https://mymmjdoctor.com/legality-checker/">Legality Checker</a>
+        <a href="https://mymmjdoctor.com/tools/edible-dosage-calculator/">Edible Dosage Calculator</a>
       </div>
-      <div class="mmj-mob-item" onclick="mmjToggle(this)">
-        About <span class="mmj-mchev">▾</span>
+
+      <div class="mmj-mob-item" data-toggle="mob-about">
+        About <span class="mmj-mchev" aria-hidden="true">▾</span>
       </div>
-      <div class="mmj-mob-sub">
-        <a href="https://mymmjdoctor.com/about/">About Us</a><a href="https://mymmjdoctor.com/reviews/">Reviews</a>
-        <a href="https://mymmjdoctor.com/contact/">Contact Us</a>
+      <div class="mmj-mob-sub" id="mob-about">
+        <a href="https://mymmjdoctor.com/about-us/">About Us</a>
+        <a href="https://mymmjdoctor.com/reviews/">Reviews</a>
+        <a href="https://mymmjdoctor.com/contact-us/">Contact Us</a>
       </div>
-      <div class="mobile_btns_wrap">
-        <button>Email</button><button>Call Now</button>
+
+      <div class="mmj-mobile-btns-wrap">
+        <a href="mailto:support@mymmdoctor.com" class="mmj-mob-btn">Email</a>
+        <a href="tel:8882818758" class="mmj-mob-btn">Call Now</a>
       </div>
-    </div>
+
+    </aside>
+    <!-- /mobile navigation -->
+
   </header>
+  <!-- /main header -->
+
 </div>
-<!-- /mmj-header-wrap -->
+<!-- /header wrapper -->

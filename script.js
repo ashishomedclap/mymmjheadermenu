@@ -1,74 +1,103 @@
-document.addEventListener('DOMContentLoaded', function () {
+/**
+ * header.js
+ * Project: My MMJ Doctor — Header System
+ * Structure:
+ *   - initHamburger
+ *   - initMobileMenu
+ *   - initScrollHeader
+ *   - initMegaMenu
+ */
 
-    // ── Hamburger ──────────────────────────────────────────
-    var ham = document.getElementById('mmjHam');
-    var mob = document.getElementById('mmjMob');
-    if (ham && mob) {
-        ham.addEventListener('click', function () {
-            ham.classList.toggle('open');
-            mob.classList.toggle('open');
-        });
-    }
-
-    // ── Mobile submenu toggle ──────────────────────────────
-    window.mmjToggle = function (el) {
-        var sub = el.nextElementSibling;
-        var isOpen = sub.classList.contains('open');
-        document.querySelectorAll('.mmj-mob-sub.open').forEach(function (s) { s.classList.remove('open'); });
-        document.querySelectorAll('.mmj-mob-item.expanded').forEach(function (i) { i.classList.remove('expanded'); });
-        if (!isOpen) { sub.classList.add('open'); el.classList.add('expanded'); }
-    };
-
-    // ── Scroll header ──────────────────────────────────────
-    const header = document.querySelector('.mmj-header');
-    const wrap = document.querySelector('.mmj-header-wrap');
-
-    if (header && wrap) {
-        function onScroll() {
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-                wrap.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-                wrap.classList.remove('scrolled');
-            }
-            if (window.scrollY > 300) {
-                header.classList.add('scrolled-deep');
-                wrap.classList.add('scrolled-deep');
-            } else {
-                header.classList.remove('scrolled-deep');
-                wrap.classList.remove('scrolled-deep');
-            }
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-    }
-
-    // ── Mega menu hover ────────────────────────────────────
-    const trigger = document.querySelector('.has-dropdown a');
-    const megaMenu = document.querySelector('.mega-menu');
-
-    if (trigger && megaMenu) {
-        let timeout;
-
-        trigger.addEventListener('mouseenter', () => {
-            clearTimeout(timeout);
-            megaMenu.classList.add('show');
-        });
-
-        trigger.parentElement.addEventListener('mouseleave', () => {
-            timeout = setTimeout(() => {
-                megaMenu.classList.remove('show');
-            }, 150);
-        });
-
-        megaMenu.addEventListener('mouseenter', () => {
-            clearTimeout(timeout);
-        });
-
-        megaMenu.addEventListener('mouseleave', () => {
-            megaMenu.classList.remove('show');
-        });
-    }
-
+document.addEventListener('DOMContentLoaded', () => {
+  initHamburger();
+  initMobileMenu();
+  initScrollHeader();
+  initMegaMenu();
 });
+
+
+/* hamburger toggle
+============================================================= */
+function initHamburger() {
+  const ham = document.getElementById('mmjHam');
+  const mob = document.getElementById('mmjMob');
+
+  if (!ham || !mob) return;
+
+  ham.addEventListener('click', () => {
+    const isOpen = mob.classList.toggle('open');
+    ham.classList.toggle('open', isOpen);
+    ham.setAttribute('aria-expanded', isOpen);
+    mob.setAttribute('aria-hidden', !isOpen);
+  });
+}
+
+
+/* mobile submenu toggle
+============================================================= */
+function initMobileMenu() {
+  const items = document.querySelectorAll('.mmj-mob-item');
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      const targetId = item.dataset.toggle;
+      const sub = document.getElementById(targetId);
+      if (!sub) return;
+
+      const isOpen = sub.classList.contains('open');
+
+      /* close all open subs */
+      document.querySelectorAll('.mmj-mob-sub.open').forEach((s) => s.classList.remove('open'));
+      document.querySelectorAll('.mmj-mob-item.expanded').forEach((i) => i.classList.remove('expanded'));
+
+      /* open clicked if it was closed */
+      if (!isOpen) {
+        sub.classList.add('open');
+        item.classList.add('expanded');
+      }
+    });
+  });
+}
+
+
+/* scroll header
+============================================================= */
+function initScrollHeader() {
+  const header = document.querySelector('.mmj-header');
+  const wrap   = document.querySelector('.mmj-header-wrap');
+
+  if (!header || !wrap) return;
+
+  function onScroll() {
+    const y = window.scrollY;
+
+    header.classList.toggle('scrolled', y > 10);
+    wrap.classList.toggle('scrolled', y > 10);
+
+    header.classList.toggle('scrolled-deep', y > 300);
+    wrap.classList.toggle('scrolled-deep', y > 300);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+
+/* mega menu (state selector)
+============================================================= */
+function initMegaMenu() {
+  const trigger  = document.querySelector('.has-dropdown a');
+  const megaMenu = document.querySelector('.mmj-mega-menu');
+
+  if (!trigger || !megaMenu) return;
+
+  let closeTimer;
+
+  const open  = () => { clearTimeout(closeTimer); megaMenu.classList.add('show'); trigger.setAttribute('aria-expanded', 'true'); };
+  const close = () => { closeTimer = setTimeout(() => { megaMenu.classList.remove('show'); trigger.setAttribute('aria-expanded', 'false'); }, 150); };
+
+  trigger.addEventListener('mouseenter', open);
+  trigger.parentElement.addEventListener('mouseleave', close);
+  megaMenu.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+  megaMenu.addEventListener('mouseleave', () => { megaMenu.classList.remove('show'); trigger.setAttribute('aria-expanded', 'false'); });
+}
