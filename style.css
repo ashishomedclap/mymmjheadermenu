@@ -1,96 +1,216 @@
-/* =============================================================
-   header.css
-   Project: My MMJ Doctor — Header System
-   Structure:
-     1. variables
-     2. base / reset
-     3. layout
-     4. components
-     5. utilities
-     6. states
-     7. animations
-     8. responsive
-============================================================= */
-
-
-/* 1. variables
-============================================================= */
-.mmj-header-wrap {
-  --green:      #0e8140;
-  --green-lt:   #3fa066;
-  --green-xlt:  #e8f5ee;
-  --white:      #ffffff;
-  --dark:       #1a1a1a;
-  --mid:        #555555;
-  --border:     #d4e8db;
-  --shadow:     0 8px 40px rgba(46, 125, 79, 0.14);
-  --radius:     14px;
-  --t:          0.22s cubic-bezier(0.4, 0, 0.2, 1);
+/* ============================================================
+   global z-index layers
+   ============================================================ */
+:root {
+  --z-topbar: 50;
+  --z-header: 100;
+  --z-dropdown: 200;
 }
 
+/* ============================================================
+   brand color tokens & design values — scoped to .site-wrap
+   ============================================================ */
+.site-wrap {
+  --color-brand: #0e8140;
+  --color-brand-mid: #3fa066;
+  --color-brand-light: #e8f5ee;
+  --color-white: #ffffff;
+  --color-dark: #1a1a1a;
+  --color-mid: #555555;
+  --color-border: #d4e8db;
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 40px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --radius: 14px;
+  --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: "Inter", system-ui, sans-serif;
+}
 
-/* 2. base / reset
-============================================================= */
-.mmj-header-wrap *,
-.mmj-header-wrap *::before,
-.mmj-header-wrap *::after {
+/* box-sizing and margin reset scoped to site-wrap */
+.site-wrap *,
+.site-wrap *::before,
+.site-wrap *::after {
   box-sizing: border-box;
-  font-family: Inter, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.mmj-header-wrap li {
+/* strip default list bullets inside site-wrap */
+.site-wrap li {
   list-style: none;
 }
 
+/* strip link underlines inside site-wrap */
+.site-wrap a {
+  text-decoration: none;
+}
 
-/* 3. layout
-============================================================= */
+/* shared hover transition for interactive elements */
+button,
+a {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
-/* top bar */
-.mmj-top-bar {
-  background: var(--green);
+/* override any cms ul styles that bleed in */
+.site-wrap .nav-list,
+.site-wrap ul.nav-list {
+  list-style-type: none !important;
+  padding: 0 !important;
+}
+
+/* ============================================================
+   top bar — promotional strip, four-column grid
+   ============================================================ */
+.top-bar {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto;
+  align-items: center;
+  gap: 0;
+  background: var(--color-brand);
+  padding: 7px 40px;
+  position: relative;
+  z-index: var(--z-topbar);
+  overflow: hidden;
+  opacity: 1;
+  max-height: 60px;
+  transition:
+    max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s ease,
+    padding 0.3s ease;
+}
+
+/* collapse top bar when user scrolls */
+.site-wrap.is-scrolled .top-bar {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* offer pill column */
+.top-bar-offer-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 14px;
+}
+
+/* offer pill: scale + shadow hover only — no pulse animation */
+.offer-pill {
+  background: #ff3b30;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.offer-pill:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(255, 59, 48, 0.45);
+}
+
+/* marquee column */
+.top-bar-offer-text {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.top-bar-marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* continuously scrolling marquee text */
+.top-bar-marquee-inner {
+  display: inline-block;
+  white-space: nowrap;
   color: #c8f0d8;
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: 0.04em;
+  animation: marqueeSlide 22s linear infinite;
+}
+
+/* marquee enter from right, exit to left */
+@keyframes marqueeSlide {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* email column */
+.top-bar-email {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 6px 40px;
-  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-right: 10px;
 }
 
-.mmj-top-bar a {
-  color: inherit;
-  text-decoration: none;
-  opacity: 0.85;
-}
-
-.mmj-top-bar a:hover {
-  opacity: 1;
-}
-
-.mmj-top-bar-left p {
-  color: #fff;
-}
-
-.mmj-top-bar-right {
+/* phone column */
+.top-bar-phone {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: flex-start;
+  padding-left: 10px;
 }
 
-/* main header */
-.mmj-header {
+/* top bar contact links */
+.top-contact-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.top-contact-icon:hover {
+  transform: scale(1.06);
+}
+
+.top-contact-icon svg {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   site header — fixed bar, becomes frosted glass on scroll
+   ============================================================ */
+.site-header {
   position: fixed;
-  top: 36.8px;
+  top: 45px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  z-index: 1000;
-  background: #fff;
-  box-shadow: none;
-  border-radius: 0;
+  z-index: var(--z-header);
+  background: var(--color-white);
+  border: none !important;
+  border-bottom: none !important;
+  overflow: visible;
   transition:
     top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -99,7 +219,39 @@
     box-shadow 0.4s ease;
 }
 
-.mmj-inner {
+/* scrolled state: frosted glass pill */
+.site-header.is-scrolled {
+  top: 10px;
+  width: 95%;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: none !important;
+  border-bottom: none !important;
+  outline: 1px solid transparent;
+  background-clip: padding-box;
+  overflow: visible;
+}
+
+/* solidify glass on hover */
+.site-header.is-scrolled:hover {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+/* solid white when mobile drawer is open */
+body.menu-open .site-header {
+  background: var(--color-white) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* header inner flex row */
+.header-inner {
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 32px;
   height: 72px;
@@ -109,653 +261,1068 @@
   gap: 20px;
 }
 
-
-/* 4. components
-============================================================= */
-
 /* logo */
-.mmj-logo img {
+.site-logo img {
   width: 100px;
+  display: block;
 }
 
-/* navigation */
-.mmj-nav {
+/* ============================================================
+   desktop primary nav
+   ============================================================ */
+.primary-nav {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 9vw;
 }
 
-.mmj-nav-list {
-  list-style: none;
+/* horizontal nav row */
+.nav-list {
+  padding: 0;
   display: flex;
   align-items: center;
-  gap: 2px;
-  padding-bottom: 0;
+  gap: 18px;
 }
 
-.mmj-nav-list > li {
+.nav-list>li {
   position: relative;
 }
 
-.mmj-nav-link {
+/* nav trigger button */
+.nav-trigger {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 10px;
+  padding: 8px 12px;
   border-radius: 8px;
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 600;
-  color: var(--dark);
-  text-decoration: none;
-  white-space: nowrap;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--color-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   cursor: pointer;
   border: none;
   background: transparent;
-  text-transform: uppercase;
-  position: relative;
-  transition: background var(--t), color var(--t);
+  white-space: nowrap;
+  transition:
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
 }
 
-.mmj-nav-link .mmj-chev {
+/* chevron icon next to nav label */
+.nav-trigger .nav-chevron {
   width: 14px;
   height: 14px;
-  transition: transform var(--t);
-  color: var(--mid);
   flex-shrink: 0;
+  color: var(--color-mid);
+  transition: transform var(--transition);
 }
 
-.mmj-nav-list > li:hover > .mmj-nav-link {
-  color: var(--green);
+/* active / hover nav trigger */
+.nav-list>li:hover>.nav-trigger,
+.nav-trigger[aria-expanded="true"] {
+  color: var(--color-brand);
+  transform: scale(1.04);
+  background: var(--color-brand-light);
+  border-radius: 8px;
 }
 
-.mmj-nav-list > li:hover > .mmj-nav-link .mmj-chev {
+/* rotate chevron when dropdown is open */
+.nav-list>li:hover>.nav-trigger .nav-chevron,
+.nav-trigger[aria-expanded="true"] .nav-chevron {
   transform: rotate(180deg);
 }
 
-.mmj-nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: var(--green);
-  border-radius: 2px;
-  transition: width var(--t);
+/* keyboard focus ring */
+.nav-trigger:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
-.mmj-nav-list > li:hover > .mmj-nav-link::after {
-  width: calc(100% - 7px);
-}
-
-/* mega menu
-   #7 fix: use opacity + pointer-events only — no display:none conflict
-============================================================= */
-.mmj-mega {
+/* ============================================================
+   dropdown panel
+   ============================================================ */
+.dropdown-panel {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  background: var(--white);
-  border: 1px solid var(--border);
+  transform: translateX(-50%) translateY(8px) scale(0.98);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 28px;
-  gap: 24px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 900;
-  /* removed display:none — was conflicting with hover opacity logic */
-  transition: opacity var(--t), transform var(--t);
-}
-
-.mmj-mega.cols-2 {
-  display: grid;
-  grid-template-columns: 1fr;
+  box-shadow: var(--shadow-lg);
+  padding: 20px;
   min-width: 460px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    visibility var(--transition);
+  z-index: var(--z-dropdown);
 }
 
-.mmj-mega::before {
+/* invisible hover bridge to prevent gap-triggered mouseleave */
+.dropdown-panel::before {
   content: "";
   position: absolute;
-  top: -14px;
+  top: -10px;
   left: 0;
   right: 0;
-  height: 14px;
+  height: 10px;
 }
 
-.mmj-nav-list > li:hover .mmj-mega {
+/* reveal dropdown on hover or .is-open */
+.nav-list>li:hover .dropdown-panel,
+.dropdown-panel.is-open {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  visibility: visible;
   pointer-events: auto;
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
-.mmj-col {
+/* vertical stack of dropdown rows */
+.dropdown-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-/* mega menu items */
-.mmj-item {
+/* individual dropdown row */
+.dropdown-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   padding: 10px 12px;
   border-radius: 10px;
   text-decoration: none;
-  transition: background var(--t);
-  cursor: pointer;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
 }
 
-.mmj-item:hover {
-  background: var(--green-xlt);
+.dropdown-item:hover {
+  background: var(--color-brand-light);
+  transform: scale(1.015);
 }
 
-.mmj-item-icon {
-  width: 34px;
-  height: 34px;
+.dropdown-item:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* square icon box */
+.item-icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
   border-radius: 8px;
+  background: var(--color-brand-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 17px;
   flex-shrink: 0;
-  transition: background var(--t);
+  transition:
+    transform var(--transition),
+    background var(--transition);
 }
 
-.mmj-item:hover .mmj-item-icon {
-  background: var(--green-xlt);
+.item-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-brand);
 }
 
-.mmj-item-text .mmj-title {
-  font-size: 16px;
+.dropdown-item:hover .item-icon {
+  transform: scale(1.1);
+  background: #d4eddf;
+}
+
+/* dropdown item title & description */
+.item-title {
+  font-size: 14px;
   font-weight: 600;
-  color: var(--dark);
+  color: var(--color-dark);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
-.mmj-item-text .mmj-desc {
+.item-desc {
   font-size: 12px;
-  color: var(--mid);
+  color: var(--color-mid);
   margin-top: 2px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-/* state selector */
-.mmj-states-menu-wrapper {
-  position: relative;
-  font-family: Inter, sans-serif;
+/* highlighted cta row */
+.dropdown-item.highlight-item {
+  background: linear-gradient(90deg, #e8f5ee, #f3fbf7);
+  border: 1px solid var(--color-brand-light);
 }
 
-.mmj-menu {
-  list-style: none;
-  padding: 0;
+.dropdown-item.highlight-item:hover {
+  background: #dff3e8;
+  transform: scale(1.02);
+  border-color: var(--color-brand-mid);
 }
 
-.mmj-mega-menu {
+/* hot badge on start application */
+.badge-hot {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #ff6b35, #ff3b30);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(255, 59, 48, 0.35);
+  animation: badgePulse 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes badgePulse {
+
+  0%,
+  100% {
+    box-shadow: 0 2px 6px rgba(255, 59, 48, 0.35);
+  }
+
+  50% {
+    box-shadow: 0 2px 14px rgba(255, 59, 48, 0.6);
+  }
+}
+
+/* verified badge on reviews */
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #e8f5ee;
+  color: var(--color-brand);
+  padding: 2px 7px;
+  border-radius: 20px;
+  border: 1px solid var(--color-brand-light);
+  flex-shrink: 0;
+}
+
+/* cta wrapper: button + subtext stacked, vertically centered to match outline button height */
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  /* fix: use height matching btn-outline so the group doesn't push row taller */
+  height: 40px;
+}
+
+/* fix: pull subtext up so it overlaps the group's fixed height without shifting the button */
+.cta-group .btn-primary {
+  flex-shrink: 0;
+  /* ensure button never compresses */
+}
+
+/* reassurance text below cta button — sits inside the 40px group height */
+.cta-subtext {
+  font-size: 10px;
+  color: var(--color-mid);
+  /* negative margin pulls subtext visually closer, keeping group within 40px */
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  /* position below the button without expanding the row */
   position: absolute;
-  top: 36px;
+  top: calc(100% + 2px);
+}
+
+/* cta-group needs relative positioning so subtext absolute works correctly */
+.cta-group {
+  position: relative;
+}
+
+/* ============================================================
+   state selector
+   ============================================================ */
+.state-selector {
+  position: relative;
+}
+
+/* scrollable state list dropdown */
+.dropdown-list {
+  position: absolute;
+  top: calc(100% + 10px);
   left: 0;
-  width: 200px;
-  background: #fff;
-  display: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  /* #8 fix: replaced calc(100vh - 50vh) with clean max-height */
-  max-height: 60vh;
-  overflow-y: auto;
-  overflow-x: clip;
+  width: 240px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  border-top: 1px solid var(--green);
-  z-index: 111;
+  box-shadow: var(--shadow-lg);
+  padding: 10px;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    visibility var(--transition);
+  z-index: var(--z-dropdown);
 }
 
-.mmj-mega-menu.show {
-  display: block;
+.dropdown-list.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
-.mmj-mega-menu::-webkit-scrollbar {
-  width: 8px;
+/* custom thin scrollbar */
+.dropdown-list::-webkit-scrollbar {
+  width: 5px;
 }
 
-.mmj-mega-menu::-webkit-scrollbar-track {
+.dropdown-list::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
 }
 
-.mmj-mega-menu::-webkit-scrollbar-thumb {
-  background: var(--green);
+.dropdown-list::-webkit-scrollbar-thumb {
+  background: var(--color-brand);
   border-radius: 10px;
 }
 
-.mmj-mega-menu::-webkit-scrollbar-thumb:hover {
-  background: #0f9d58;
-}
-
-.mmj-mega-column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.mmj-mega-column li a {
+/* state grid */
+.dropdown-grid {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: var(--dark);
-  transition: 0.2s;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.mmj-mega-column li:hover {
-  background: var(--green-xlt);
-  border-radius: 10px;
-}
-
-/* cta buttons */
-.mmj-cta {
+/* individual state link */
+.state-link {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-shrink: 0;
-  margin-left: 20px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--color-dark);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition),
+    color var(--transition);
 }
 
-.mmj-btn-login {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--mid);
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 9px;
-  text-transform: uppercase;
-  border: 1px solid var(--green);
-  height: 38px;
+.state-link:hover {
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+  transform: scale(1.02);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+}
+
+.state-link:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* dot indicator before state links */
+.state-link::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-brand-light);
+  border: 1.5px solid var(--color-brand-mid);
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+
+.state-link:hover::before {
+  background: var(--color-brand);
+}
+
+/* saved/selected state highlighted */
+.state-link.is-saved {
+  color: var(--color-brand);
+  font-weight: 700;
+}
+
+.state-link.is-saved::before {
+  background: var(--color-brand);
+}
+
+/* empty state message */
+.state-no-results {
+  font-size: 13px;
+  color: var(--color-mid);
+  padding: 8px 10px;
+  display: none;
+}
+
+.state-no-results.is-visible {
+  display: block;
+}
+
+/* ============================================================
+   header actions cluster
+   ============================================================ */
+
+/* right cluster: contacts + state + cta */
+.header-cta-wrap {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: transform var(--t), box-shadow var(--t);
-}
-
-.mmj-btn-login:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-}
-
-.mmj-btn-login .mmj-chev {
-  width: 14px;
-  height: 14px;
-  transition: transform var(--t);
-  color: var(--mid);
   flex-shrink: 0;
 }
 
-.mmj-btn-login:hover > .mmj-chev {
+/* actions row */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+/* scroll contact icons: hidden until glass mode */
+.desktop-scroll-contacts {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.site-header.is-scrolled .desktop-scroll-contacts {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* glass-style contact icon button */
+.desktop-scroll-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-border);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.desktop-scroll-icon:hover {
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(14, 129, 64, 0.18);
+}
+
+.desktop-scroll-icon svg {
+  flex-shrink: 0;
+  stroke: var(--color-brand);
+}
+
+/* state selector outline button — wider to fit single-line text */
+.btn-outline {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-dark);
+  width: 190px;
+  padding: 0 14px;
+  border-radius: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1.5px solid var(--color-brand);
+  background: transparent;
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.btn-outline:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btn-outline:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+.btn-outline .nav-chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--color-mid);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.btn-outline[aria-expanded="true"] .nav-chevron {
   transform: rotate(180deg);
 }
 
-.mmj-btn-book {
+.site-header.is-scrolled .btn-outline {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+/* primary cta button: same height as outline button for alignment */
+.btn-primary {
   display: flex;
   align-items: center;
   gap: 7px;
-  background: var(--green);
-  color: var(--white);
+  background: var(--color-brand);
+  color: var(--color-white);
+  font-family: "Inter", system-ui, sans-serif;
   font-size: 13.5px;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 10px 20px;
+  letter-spacing: 0.05em;
+  padding: 0 24px;
+  height: 40px;
   border-radius: 10px;
   text-decoration: none;
-  box-shadow: 0 3px 14px rgba(46, 125, 79, 0.3);
-  height: 38px;
-  transition: background var(--t), transform var(--t), box-shadow var(--t);
+  box-shadow: 0 3px 14px rgba(14, 129, 64, 0.3);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
 }
 
-.mmj-btn-book:hover {
+.btn-primary:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(14, 129, 64, 0.35);
+  background: #0c7238;
 }
 
-/* header icons */
-.mmj-header-icons {
-  display: flex;
-  gap: 10px;
-  opacity: 0;
-  transform: translateY(-6px);
-  pointer-events: none;
-  transition: all 0.3s ease;
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
 }
 
-.mmj-hicon {
-  width: 36px;
-  height: 36px;
+/* ============================================================
+   mobile contact icons & hamburger
+   ============================================================ */
+
+/* mobile icon-only email and phone */
+.mobile-contact-icons {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-icon-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--green-xlt);
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
-  font-size: 16px;
-  text-decoration: none;
+  color: var(--color-dark);
+  background: transparent;
+  transition:
+    background var(--transition),
+    transform var(--transition);
 }
 
-/* hamburger */
-.mmj-hamburger {
+.mobile-icon-btn:hover,
+.mobile-icon-btn:active {
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+  transform: scale(1.1);
+}
+
+/* hide mobile contact icons when hamburger drawer is open */
+body.menu-open .mobile-contact-icons {
+  display: none !important;
+}
+
+/* mobile cta: always visible regardless of menu state */
+.mobile-cta-btn {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  background: var(--color-brand);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 11px;
+  border-radius: 7px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(14, 129, 64, 0.28);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.mobile-cta-btn:hover,
+.mobile-cta-btn:active {
+  background: #0c7238;
+  transform: scale(1.04);
+  box-shadow: 0 4px 14px rgba(14, 129, 64, 0.38);
+}
+
+/* hamburger button */
+.menu-toggle {
+  display: none;
   cursor: pointer;
-  padding: 6px;
-  border-radius: 8px;
   background: transparent;
   border: none;
-  margin-left: auto;
-  width: 35px;
+  width: 38px;
   height: 48px;
+  position: relative;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
 }
 
-.mmj-hamburger span {
+/* both icon layers centered and stacked */
+.menu-toggle span {
   position: absolute;
-  font-size: 26px;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
-.menu-icon {
+.menu-toggle span svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-dark);
+}
+
+/* default: bars visible, x hidden */
+.icon-open {
   opacity: 1;
-  transform: rotate(0deg) scale(1);
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
 }
 
-.close-icon {
+.icon-close {
   opacity: 0;
-  transform: rotate(-90deg) scale(0.6);
+  transform: translate(-50%, -50%) rotate(-90deg) scale(0.6);
 }
 
-/* mobile navigation */
-.mmj-mobile-nav {
+/* toggled: swap to x */
+.menu-toggle.is-open .icon-open {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg) scale(0.6);
+}
+
+.menu-toggle.is-open .icon-close {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   mobile promo banner
+   ============================================================ */
+.promo-banner {
+  display: none;
+  max-height: 48px;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s ease,
+    padding 0.3s ease;
+}
+
+/* collapse mobile promo on scroll */
+.site-header.is-scrolled .promo-banner {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* scrolling promo text */
+.promo-marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+}
+
+.promo-marquee-inner {
+  display: inline-block;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 600;
+  animation: marqueeSlide 18s linear infinite;
+}
+
+/* red pill cta inside mobile promo banner — scale + shadow hover, no animation */
+.promo-cta {
+  background: #ff3b30;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  flex-shrink: 0;
+  justify-self: end;
+  transition:
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.promo-cta:hover,
+.promo-cta:active {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(255, 59, 48, 0.45);
+}
+
+/* ============================================================
+   mobile drawer
+   ============================================================ */
+
+/* slide-down drawer: collapsed by default */
+.mobile-menu {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   max-height: 0;
   overflow: hidden;
   padding: 0 20px;
-  background: var(--white);
-  z-index: 999;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  background: var(--color-white);
+  border-top: none;
+  transition:
+    max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+    border-top-color 0.3s ease;
 }
 
-.mmj-mob-item {
+/* expanded drawer */
+.mobile-menu.is-open {
+  max-height: calc(100svh - 80px);
+  overflow-y: auto;
+  padding: 12px 20px 28px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* accordion row */
+.mobile-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
+  padding: 13px 0;
   font-size: 14px;
   font-weight: 600;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--color-dark);
   cursor: pointer;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eeeeee;
+  user-select: none;
+  transition: color var(--transition);
 }
 
-.mmj-mob-sub {
+.mobile-item:hover,
+.mobile-item.is-expanded {
+  color: var(--color-brand);
+}
+
+/* chevron inside accordion row */
+.mobile-chevron-svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-mid);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.mobile-item.is-expanded .mobile-chevron-svg {
+  transform: rotate(180deg);
+}
+
+/* accordion submenu: smooth collapse/expand */
+.mobile-submenu {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding-left: 12px;
+  gap: 2px;
   max-height: 0;
   overflow: hidden;
-  font-size: 13px;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  will-change: max-height;
+  transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.mmj-mob-sub a {
-  text-decoration: none;
-  color: var(--dark);
-  padding: 6px 0;
-  transition: color 0.3s ease;
+.mobile-submenu.is-open {
+  max-height: 520px;
+  padding: 6px 0 10px;
 }
 
-.mmj-mob-sub a:hover {
-  color: var(--green);
-}
-
-.mmj-mobile-states {
-  height: 300px;
+/* states submenu: extra height for long list */
+.mobile-submenu--states.is-open {
+  max-height: 55vh;
   overflow-y: auto;
 }
 
-.mmj-mobile-btns-wrap {
+.mobile-submenu--states::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mobile-submenu--states::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.mobile-submenu--states::-webkit-scrollbar-thumb {
+  background: var(--color-brand);
+  border-radius: 10px;
+}
+
+/* state search input */
+.mobile-state-search {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-border);
+  background: #f8fdfb;
+  font-size: 13px;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--color-dark);
+  outline: none;
+  margin: 6px 0 8px;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.mobile-state-search:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(14, 129, 64, 0.1);
+}
+
+.mobile-state-search::placeholder {
+  color: #aaaaaa;
+}
+
+/* submenu link rows */
+.mobile-submenu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: var(--color-mid);
+  font-size: 13.5px;
+  font-family: "Inter", system-ui, sans-serif;
+  text-decoration: none;
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    color var(--transition);
+}
+
+.mobile-submenu a:hover,
+.mobile-submenu a:active {
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+  transform: scale(1.01);
+}
+
+/* dot indicator for state links in mobile submenu */
+.mobile-submenu .state-link::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-brand-light);
+  border: 1.5px solid var(--color-brand-mid);
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+
+.mobile-submenu .state-link:hover::before,
+.mobile-submenu .state-link:active::before {
+  background: var(--color-brand);
+}
+
+/* mobile action bar: email + call */
+.mobile-action-bar {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 20px;
+  padding-bottom: 4px;
 }
 
-.mmj-mob-btn {
+/* full-width action buttons in drawer footer */
+.mobile-action-btn {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--green);
-  color: var(--white);
+  gap: 7px;
+  background: var(--color-brand);
+  color: var(--color-white);
   border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  flex: 1;
-  text-decoration: none;
-  transition: background var(--t);
-}
-
-/* offer pill */
-.mmj-offer-pill {
-  background: #ff3b30;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 12px;
-  line-height: 1;
-  text-transform: uppercase;
-  cursor: pointer;
-  border: none;
-  animation: offer-pulse 1.4s infinite;
-}
-
-.mmj-offer-pill:hover {
-  transform: scale(0.9);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* promo banner */
-.mmj-promo-banner {
-  background-color: var(--green);
-  padding: 6px 20px;
-  text-align: center;
-  width: 100%;
-  max-height: 100px;
-  opacity: 1;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-}
-
-.mmj-promo-text {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
-
-.mmj-promo-btn {
-  background: #fff;
-  color: var(--green);
-  border: none;
-  border-radius: 30px;
-  padding: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  width: 140px;
-  letter-spacing: 0.01em;
-}
-
-.top-bar-mobile-only {
-  display: none;
-}
-
-
-/* 5. utilities
-============================================================= */
-.d-flex-center {
-  display: flex;
-  align-items: center;
-}
-
-.flex-center-10 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-
-/* 6. states
-============================================================= */
-
-/* scrolled */
-.mmj-header.scrolled {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  box-shadow: var(--shadow);
-  top: 36.8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
   border-radius: 10px;
+  padding: 13px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: "Inter", system-ui, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
 }
 
-.mmj-header.scrolled:hover {
-  background: #fff;
+.mobile-action-btn:hover,
+.mobile-action-btn:active {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: #0c7238;
 }
 
-.mmj-header.scrolled-deep {
-  top: 10px;
-}
+/* ============================================================
+   breakpoints
+   ============================================================ */
 
-/* hide top bar on scroll */
-.mmj-header-wrap.scrolled .mmj-top-bar {
-  display: none;
-}
-
-/* show icons on scroll */
-.mmj-header.scrolled .mmj-header-icons {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* hide promo on scroll */
-.mmj-header.scrolled .mmj-promo-banner {
-  max-height: 0;
-  opacity: 0;
-  padding: 0;
-}
-
-/* hamburger open */
-.mmj-hamburger.open .menu-icon {
-  opacity: 0;
-  transform: rotate(90deg) scale(0.6);
-}
-
-.mmj-hamburger.open .close-icon {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-
-/* mobile nav open */
-.mmj-mobile-nav.open {
-  max-height: 620px;
-  padding: 16px 20px 24px;
-}
-
-/* mobile sub open */
-.mmj-mob-sub.open {
-  max-height: 400px;
-  padding: 8px 0 16px;
-}
-
-/* mobile chevron expanded */
-.mmj-mob-item.expanded .mmj-mchev {
-  transform: rotate(180deg);
-}
-
-
-/* 7. animations
-============================================================= */
-@keyframes offer-pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.7; }
-}
-
-
-/* 8. responsive
-============================================================= */
-@media (max-width: 1140px) {
-  .mmj-nav {
-    margin-left: 0;
-  }
-}
-
+/* tablet and below: switch to mobile layout */
 @media (max-width: 991px) {
-  .mmj-nav {
+  .primary-nav {
+    display: none !important;
+  }
+
+  .state-selector {
+    display: none !important;
+  }
+
+  .btn-primary {
+    display: none !important;
+  }
+
+  .top-bar {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .cta-subtext {
     display: none;
   }
 
-  .mmj-hamburger {
+  .desktop-scroll-icon {
+    display: none;
+  }
+
+  /* show mobile contact icons */
+  .mobile-contact-icons {
     display: flex;
+  }
+
+  /* show mobile cta — always, even when menu is open */
+  .mobile-cta-btn {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* mobile promo banner replaces top bar */
+  .promo-banner {
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-brand);
+    padding: 6px 12px;
+    max-height: 48px;
+    opacity: 1;
+    overflow: hidden;
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      padding 0.3s ease;
   }
 }
 
+/* small mobile: full-width header, no floating pill */
 @media (max-width: 575px) {
-  .mmj-header {
+  .site-header {
     top: 0;
     width: 100% !important;
   }
 
-  .mmj-top-bar {
-    display: none;
-  }
-
-  .mmj-inner {
-    height: 64px;
+  .header-inner {
+    height: 60px;
     padding: 0 16px;
   }
 
-  .mmj-header.scrolled,
-  .mmj-header.scrolled-deep {
+  .site-header.is-scrolled {
     top: 0 !important;
-  }
-
-  .has-dropdown {
-    display: none;
-  }
-
-  .mmj-header-icons {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .d-flex-center {
-    display: block;
-  }
-
-  .mmj-btn-book {
-    display: none !important;
-  }
-
-  .top-bar-mobile-only {
-    display: block;
+    width: 100% !important;
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
   }
 }

@@ -1,378 +1,515 @@
-<link rel="stylesheet" href="style.css" />
-<script src="script.js" defer></script>
+<!doctype html>
+<html lang="en">
 
-<!-- header wrapper -->
-<div class="mmj-header-wrap">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyMMJDoctor</title>
+  <!-- google fonts: inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <!-- top bar -->
-  <div class="mmj-top-bar">
-    <div class="mmj-top-bar-left flex-center-10">
-      <p>Save 10% on Evaluation • Licensed &amp; Secure</p>
-      <button class="mmj-offer-pill">Grab Now</button>
+<body>
+  <!-- root wrapper: holds color tokens and scoped resets -->
+  <div class="site-wrap" id="siteWrap">
+
+    <!-- top bar: promotional strip, hidden on mobile, collapses on scroll -->
+    <div class="top-bar" id="topBar" role="banner" aria-label="Promotional offer banner">
+
+      <!-- offer pill: links to deals page -->
+      <div class="top-bar-offer-btn">
+        <a href="https://mymmjdoctor.com/mmj-card-offers/" class="offer-pill" aria-label="View current offer">View
+          Offer</a>
+      </div>
+
+      <!-- marquee: scrolling promo text -->
+      <div class="top-bar-offer-text">
+        <div class="top-bar-marquee-wrap">
+          <span class="top-bar-marquee-inner">
+            Save 10% on Your Evaluation • National Cannabis Awareness Month is
+            here – discover how medical marijuana could transform your
+            wellness routine!
+          </span>
+        </div>
+      </div>
+
+      <!-- email contact link -->
+      <div class="top-bar-email">
+        <a href="mailto:support@mymmdoctor.com" class="top-contact-icon" aria-label="Email support">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"
+            aria-hidden="true">
+            <path
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <span>support@mymmdoctor.com</span>
+        </a>
+      </div>
+
+      <!-- phone contact link -->
+      <div class="top-bar-phone">
+        <a href="tel:8882818758" class="top-contact-icon" aria-label="Call us at 888-281-8758">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"
+            aria-hidden="true">
+            <path
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>(888)-281-8758</span>
+        </a>
+      </div>
     </div>
-    <div class="mmj-top-bar-right">
-      <a href="mailto:support@mymmdoctor.com">📧 support@mymmdoctor.com</a>
-      <a href="tel:8882818758">📞 (888)-281-8758</a>
-    </div>
-  </div>
+    <!-- /top-bar -->
 
-  <!-- main header -->
-  <header class="mmj-header">
+    <!-- site header: fixed bar, becomes frosted glass pill on scroll -->
+    <header class="site-header" id="siteHeader" role="banner">
 
-    <!-- mobile promo banner -->
-    <div class="mmj-promo-banner top-bar-mobile-only">
-      <marquee class="mmj-promo-text">St. Patrick's Day Special: 30% Off!</marquee>
-      <button class="mmj-promo-btn">Strike Gold</button>
-    </div>
+      <!-- mobile promo banner: collapses on scroll, hidden on desktop -->
+      <div class="promo-banner" id="promoBanner" aria-hidden="true">
+        <div class="promo-marquee-wrap">
+          <span class="promo-marquee-inner">Save 10% on Your Evaluation • National Cannabis Awareness
+            Month!</span>
+        </div>
+        <a href="https://mymmjdoctor.com/mmj-card-offers/" class="promo-cta">View Offer</a>
+      </div>
 
-    <div class="mmj-inner">
+      <!-- header inner: logo + nav + actions row -->
+      <div class="header-inner">
 
-      <!-- logo -->
-      <a href="https://mymmjdoctor.com" class="mmj-logo">
-        <img
-          src="https://mymmjdoctor.com/wp-content/uploads/2025/10/logo.webp"
-          alt="MyMMJ Doctor logo"
-          width="100"
-          height="auto"
-        />
-      </a>
+        <!-- brand logo -->
+        <a href="/" class="site-logo" aria-label="MyMMJDoctor Home">
+          <img src="https://staging6.mymmjdoctor.com/wp-content/uploads/2025/10/logo.webp" alt="MyMMJDoctor Logo"
+            width="100" height="auto" />
+        </a>
 
-      <!-- main navigation -->
-      <nav class="mmj-nav" aria-label="Main navigation">
-        <ul class="mmj-nav-list">
+        <!-- desktop nav: three mega-dropdowns -->
+        <nav class="primary-nav" aria-label="Main navigation">
+          <ul class="nav-list" role="menubar">
 
-          <!-- get my card -->
-          <li>
-            <a
-              class="mmj-nav-link"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-              tabindex="0"
-            >
-              Get My Card
-              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </a>
-            <div class="mmj-mega cols-2" role="region">
-              <div class="mmj-col">
-                <a class="mmj-item" href="https://mymmjdoctor.com/#get-your-card-atf">
-                  <div class="mmj-item-icon" aria-hidden="true">🚀</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Start Evaluation</div>
-                    <div class="mmj-desc">Check if you meet the requirements for a medical marijuana card.</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="#">
-                  <div class="mmj-item-icon" aria-hidden="true">♻️</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Card Renewal</div>
-                    <div class="mmj-desc">Renew your existing medical marijuana card quickly and easily.</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/tools/do-i-qualify/">
-                  <div class="mmj-item-icon" aria-hidden="true">❓</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Do I Qualify</div>
-                    <div class="mmj-desc">Find out if your condition qualifies for medical cannabis.</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="#">
-                  <div class="mmj-item-icon" aria-hidden="true">🛠️</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">How It Works</div>
-                    <div class="mmj-desc">Step-by-step guide to getting your card with us.</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/medical-conditions/">
-                  <div class="mmj-item-icon" aria-hidden="true">📋</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Conditions</div>
-                    <div class="mmj-desc">Discover which health conditions may qualify you.</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
+            <!-- get my card dropdown -->
+            <li role="none">
+              <button class="nav-trigger" role="menuitem" aria-haspopup="true" aria-expanded="false"
+                aria-controls="panel-get-card">
+                Get My Card
+                <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="dropdown-panel" id="panel-get-card" role="region" aria-label="Get My Card submenu">
+                <div class="dropdown-group">
 
-          <!-- cannabis guides -->
-          <li>
-            <a
-              class="mmj-nav-link"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-              tabindex="0"
-            >
-              Cannabis Guides
-              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </a>
-            <div class="mmj-mega cols-2" role="region">
-              <div class="mmj-col">
-                <a class="mmj-item" href="https://mymmjdoctor.com/blog/">
-                  <div class="mmj-item-icon" aria-hidden="true">📰</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Blog</div>
-                    <div class="mmj-desc">Industry updates &amp; tips</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="#">
-                  <div class="mmj-item-icon" aria-hidden="true">🧰</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Tools</div>
-                    <div class="mmj-desc">Industry updates &amp; tips</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/tools/medical-marijuana-tax-calculator/">
-                  <div class="mmj-item-icon" aria-hidden="true">🧮</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Tax Calculator</div>
-                    <div class="mmj-desc">Learn about Tax Calculation</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="#">
-                  <div class="mmj-item-icon" aria-hidden="true">⚖️</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Legality Checker</div>
-                    <div class="mmj-desc">Industry updates &amp; tips</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="#">
-                  <div class="mmj-item-icon" aria-hidden="true">💊</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Edible Dosage Calculator</div>
-                    <div class="mmj-desc">Industry updates &amp; tips</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
+                  <!-- start application: highlighted with hot badge -->
+                  <a class="dropdown-item highlight-item" href="/start-evaluation" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M13 2L3 14h7l-1 8 10-12h-7z" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">
+                        Start Your Application
+                        <span class="badge-hot">🔥 Popular</span>
+                      </div>
+                      <div class="item-desc">
+                        Begin your MMJ application with a quick online
+                        evaluation from licensed doctors.
+                      </div>
+                    </div>
+                  </a>
 
-          <!-- about -->
-          <li>
-            <a
-              class="mmj-nav-link"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-              tabindex="0"
-            >
-              About
-              <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </a>
-            <div class="mmj-mega cols-2" role="region">
-              <div class="mmj-col">
-                <a class="mmj-item" href="https://mymmjdoctor.com/about-us/?_gl=1*6en9xq*_gcl_au*MTQyNjg0OTE0MS4xNzczMjg2NTk1*_ga*MTIxMTQ5NjQ4OS4xNzczMjg2NTk2*_ga_P6Y1NN8DPJ*czE3NzMyODY1OTYkbzEkZzEkdDE3NzMyODc3MjEkajUzJGwwJGgw">
-                  <div class="mmj-item-icon" aria-hidden="true">📞</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">About Us</div>
-                    <div class="mmj-desc">Discover our mission, team, and commitment to patients.</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/reviews/">
-                  <div class="mmj-item-icon" aria-hidden="true">🤝</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Reviews</div>
-                    <div class="mmj-desc">See what patients are saying about their experience with us.</div>
-                  </div>
-                </a>
-                <a class="mmj-item" href="https://mymmjdoctor.com/contact-us/">
-                  <div class="mmj-item-icon" aria-hidden="true">📰</div>
-                  <div class="mmj-item-text">
-                    <div class="mmj-title">Contact Us</div>
-                    <div class="mmj-desc">Get in touch with our team for help or questions.</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
+                  <!-- card renewal -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/medical-conditions/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path
+                          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">Card Renewal</div>
+                      <div class="item-desc">
+                        Renew your medical marijuana card online quickly
+                        without paperwork or in-person visits.
+                      </div>
+                    </div>
+                  </a>
 
-        </ul>
-      </nav>
+                  <!-- do i qualify -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/tools/do-i-qualify/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4m0 4h.01" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">Do I Qualify?</div>
+                      <div class="item-desc">
+                        Check if your condition qualifies for medical cannabis
+                        in your state instantly.
+                      </div>
+                    </div>
+                  </a>
 
-      <!-- cta -->
-      <div class="flex-center-10">
-        <div class="d-flex-center">
+                  <!-- how it works -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/locations/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path
+                          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">How It Works</div>
+                      <div class="item-desc">
+                        Simple 3-step process to get approved and receive your
+                        medical marijuana certification.
+                      </div>
+                    </div>
+                  </a>
 
-          <!-- header icons (visible on scroll) -->
-          <div class="mmj-header-icons" aria-hidden="true">
-            <a href="mailto:support@mymmjdoctor.com" class="mmj-hicon" title="Email us">📧</a>
-            <a href="tel:8882818758" class="mmj-hicon" title="Call us">📞</a>
-          </div>
-
-          <div class="mmj-cta">
-
-            <!-- state selector -->
-            <div class="mmj-states-menu-wrapper">
-              <div class="mmj-menu">
-                <div class="has-dropdown">
-                  <a
-                    class="mmj-btn-login"
-                    href="#"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    aria-controls="states"
-                    data-target="states"
-                  >
-                    SELECT STATE
-                    <svg class="mmj-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
+                  <!-- pricing -->
+                  <a class="dropdown-item" href="/pricing" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7H14a3.5 3.5 0 010 7H6" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">Pricing</div>
+                      <div class="item-desc">
+                        Simple, transparent pricing with no hidden fees. See
+                        what's included in each plan.
+                      </div>
+                    </div>
                   </a>
                 </div>
               </div>
+            </li>
+            <!-- /get-my-card -->
 
-              <!-- state dropdown -->
-              <div class="mmj-mega-menu" id="states" role="listbox" aria-label="Select your state">
-                <div class="mmj-mega-column">
-                  <ul>
-                    <!-- states list (desktop) -->
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arizona/">Arizona</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arkansas/">Arkansas</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-california/">California</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-connecticut/">Connecticut</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-delaware/">Delaware</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-florida/">Florida</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-georgia/">Georgia</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-illinois/">Illinois</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-iowa/">Iowa</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-louisiana/">Louisiana</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maine/">Maine</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maryland/">Maryland</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-massachusetts/">Massachusetts</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-michigan/">Michigan</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-minnesota/">Minnesota</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-missouri/">Missouri</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-montana/">Montana</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-nevada/">Nevada</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-jersey/">New Jersey</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-mexico/">New Mexico</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-york/">New York</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-north-dakota/">North Dakota</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-ohio/">Ohio</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-oklahoma/">Oklahoma</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/">Pennsylvania</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-texas/">Texas</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-vermont/">Vermont</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-virginia/">Virginia</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-washington-dc/">Washington DC</a></li>
-                    <li><a href="https://mymmjdoctor.com/medical-marijuana-card-west-virginia/">West Virginia</a></li>
-                  </ul>
+            <!-- cannabis resources dropdown -->
+            <li role="none">
+              <button class="nav-trigger" role="menuitem" aria-haspopup="true" aria-expanded="false"
+                aria-controls="panel-guides">
+                Cannabis Resources
+                <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="dropdown-panel" id="panel-guides" role="region" aria-label="Cannabis Guides submenu">
+                <div class="dropdown-group">
+
+                  <!-- blog -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/blog/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path
+                          d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">Blog</div>
+                      <div class="item-desc">
+                        Expert articles, updates, and guides to help you
+                        understand medical cannabis better.
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- conditions -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/blog/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path
+                          d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">Conditions</div>
+                      <div class="item-desc">
+                        Explore qualifying conditions approved for medical
+                        marijuana treatment across different states.
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- mmj tools -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/tools/medical-marijuana-tax-calculator/"
+                    role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="4" y="2" width="16" height="20" rx="2" />
+                        <path d="M9 7h6M9 12h6M9 17h4" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">MMJ Tools</div>
+                      <div class="item-desc">
+                        Helpful tools like dosage calculator, legality
+                        checker, and tax estimator for patients.
+                      </div>
+                    </div>
+                  </a>
                 </div>
+              </div>
+            </li>
+            <!-- /cannabis-resources -->
+
+            <!-- about dropdown -->
+            <li role="none">
+              <button class="nav-trigger" role="menuitem" aria-haspopup="true" aria-expanded="false"
+                aria-controls="panel-about">
+                About
+                <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="dropdown-panel" id="panel-about" role="region" aria-label="About submenu">
+                <div class="dropdown-group">
+
+                  <!-- about us -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/about-us/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path
+                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">About Us</div>
+                      <div class="item-desc">
+                        Learn how we simplify medical cannabis access through
+                        secure, compliant, patient-focused telehealth.
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- reviews: with verified badge -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/reviews/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="M9 12l2 2 4-4" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">
+                        Reviews <span class="badge-verified">✓ Verified</span>
+                      </div>
+                      <div class="item-desc">
+                        Read real patient experiences and trusted feedback
+                        from thousands of satisfied users.
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- contact -->
+                  <a class="dropdown-item" href="https://mymmjdoctor.com/contact-us/" role="menuitem">
+                    <div class="item-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <div class="item-title">Contact</div>
+                      <div class="item-desc">
+                        Get support quickly through phone, email, or chat for
+                        any questions or assistance.
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <!-- /about -->
+          </ul>
+        </nav>
+        <!-- /primary-nav -->
+
+        <!-- right cluster: scroll contacts + state selector + cta + hamburger -->
+        <div class="header-cta-wrap">
+          <div class="header-actions">
+
+            <!-- scroll-state contact icons: visible only in glass mode -->
+            <div class="desktop-scroll-contacts" id="desktopScrollContacts" aria-label="Quick contact">
+              <a href="mailto:support@mymmdoctor.com" class="desktop-scroll-icon" aria-label="Email us">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"
+                  aria-hidden="true">
+                  <path
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </a>
+              <a href="tel:8882818758" class="desktop-scroll-icon" aria-label="Call us">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"
+                  aria-hidden="true">
+                  <path
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- state selector: outline button + dropdown list -->
+            <div class="state-selector" id="stateSelector">
+              <button class="btn-outline" id="stateToggle" aria-haspopup="listbox" aria-expanded="false"
+                aria-controls="stateDropdown">
+                <span id="stateLabel">SELECT YOUR STATE</span>
+                <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <!-- state links injected by js -->
+              <div class="dropdown-list" id="stateDropdown" role="listbox" aria-label="Select your state">
+                <div class="dropdown-grid" id="stateGrid"></div>
               </div>
             </div>
 
-            <a href="https://mymmjdoctor.com/#get-your-card-atf" class="mmj-btn-book">Book Now</a>
+            <!-- cta group: button + reassurance text below, aligned to center -->
+            <div class="cta-group">
+              <a href="/start-evaluation" class="btn-primary" id="btnPrimary" role="button">Start Evaluation</a>
+              <span class="cta-subtext">Takes 2–3 minutes</span>
+            </div>
           </div>
+          <!-- /header-actions -->
+
+          <!-- mobile contact icon buttons: hidden when menu is open -->
+          <div class="mobile-contact-icons" id="mobileContactIcons" aria-label="Quick contact">
+            <a href="mailto:support@mymmdoctor.com" aria-label="Email us" class="mobile-icon-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"
+                aria-hidden="true">
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
+            <a href="tel:8882818758" aria-label="Call us" class="mobile-icon-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"
+                aria-hidden="true">
+                <path
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- mobile cta: always visible, even when hamburger menu is open -->
+          <a href="/start-evaluation" class="mobile-cta-btn" id="mobileCTABtn" aria-label="Start your evaluation">Start
+            Here</a>
+
+          <!-- hamburger toggle: swaps bars/x icons -->
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+            aria-controls="mobileMenu">
+            <span class="icon-open" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </span>
+            <span class="icon-close" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <!-- /header-cta-wrap -->
+      </div>
+      <!-- /header-inner -->
+
+      <!-- mobile drawer: slide-down accordion navigation -->
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+
+        <!-- select state accordion -->
+        <div class="mobile-item" role="button" tabindex="0" data-accordion>
+          Select State
+          <svg class="mobile-chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+        <div class="mobile-submenu mobile-submenu--states" role="region" aria-label="State list">
+          <input type="text" class="mobile-state-search" id="mobileStateSearch" placeholder="Search state…"
+            autocomplete="off" aria-label="Search states" />
+          <!-- state links populated by js -->
+          <div class="dropdown-grid" id="mobileStateGrid"></div>
         </div>
 
-        <!-- hamburger -->
-        <button
-          class="mmj-hamburger"
-          id="mmjHam"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          aria-controls="mmjMob"
-        >
-          <span class="menu-icon" aria-hidden="true">☰</span>
-          <span class="close-icon" aria-hidden="true">✕</span>
-        </button>
-      </div>
-
-    </div>
-    <!-- /mmj-inner -->
-
-    <!-- mobile navigation -->
-    <aside class="mmj-mobile-nav" id="mmjMob" aria-label="Mobile navigation" aria-hidden="true">
-
-      <div class="mmj-mob-item" data-toggle="mob-states">
-        Select State <span class="mmj-mchev" aria-hidden="true">▾</span>
-      </div>
-      <div class="mmj-mob-sub" id="mob-states">
-        <div class="mmj-mega-column mmj-mobile-states">
-          <ul>
-            <!-- states list (mobile duplicate - keep in sync with desktop) -->
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arizona/">Arizona</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-arkansas/">Arkansas</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-california/">California</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-connecticut/">Connecticut</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-delaware/">Delaware</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-florida/">Florida</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-georgia/">Georgia</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-illinois/">Illinois</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-iowa/">Iowa</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-louisiana/">Louisiana</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maine/">Maine</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-maryland/">Maryland</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-massachusetts/">Massachusetts</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-michigan/">Michigan</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-minnesota/">Minnesota</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-missouri/">Missouri</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-montana/">Montana</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-nevada/">Nevada</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-jersey/">New Jersey</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-mexico/">New Mexico</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-new-york/">New York</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-north-dakota/">North Dakota</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-ohio/">Ohio</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-oklahoma/">Oklahoma</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/">Pennsylvania</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-texas/">Texas</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-vermont/">Vermont</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-virginia/">Virginia</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-washington-dc/">Washington DC</a></li>
-            <li><a href="https://mymmjdoctor.com/medical-marijuana-card-west-virginia/">West Virginia</a></li>
-          </ul>
+        <!-- get my card accordion -->
+        <div class="mobile-item" role="button" tabindex="0" data-accordion>
+          Get My Card
+          <svg class="mobile-chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
         </div>
-      </div>
+        <div class="mobile-submenu" role="region">
+          <a href="/start-evaluation">Start Your Application</a>
+          <a href="https://mymmjdoctor.com/medical-conditions/">Card Renewal</a>
+          <a href="https://mymmjdoctor.com/tools/do-i-qualify/">Do I Qualify?</a>
+          <a href="https://mymmjdoctor.com/locations/">How It Works</a>
+          <a href="/pricing">Pricing</a>
+        </div>
 
-      <div class="mmj-mob-item" data-toggle="mob-card">
-        Get My Card <span class="mmj-mchev" aria-hidden="true">▾</span>
-      </div>
-      <div class="mmj-mob-sub" id="mob-card">
-        <a href="https://mymmjdoctor.com/#get-your-card-atf">Start Evaluation</a>
-        <a href="#">Card Renewal</a>
-        <a href="https://mymmjdoctor.com/tools/do-i-qualify/">Do I Qualify</a>
-        <a href="#">How It Works</a>
-        <a href="#">Conditions</a>
-      </div>
+        <!-- cannabis resources accordion -->
+        <div class="mobile-item" role="button" tabindex="0" data-accordion>
+          Cannabis Resources
+          <svg class="mobile-chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+        <div class="mobile-submenu" role="region">
+          <a href="https://mymmjdoctor.com/blog/">Blog</a>
+          <a href="https://mymmjdoctor.com/blog/">Conditions</a>
+          <a href="https://mymmjdoctor.com/tools/medical-marijuana-tax-calculator/">MMJ Tools</a>
+        </div>
 
-      <div class="mmj-mob-item" data-toggle="mob-guides">
-        Cannabis Guides <span class="mmj-mchev" aria-hidden="true">▾</span>
-      </div>
-      <div class="mmj-mob-sub" id="mob-guides">
-        <a href="https://mymmjdoctor.com/blog/">Blog</a>
-        <a href="#">Tools</a>
-        <a href="https://mymmjdoctor.com/tools/medical-marijuana-tax-calculator/">Tax Calculator</a>
-        <a href="#">Legality Checker</a>
-        <a href="#">Edible Dosage Calculator</a>
-      </div>
+        <!-- about accordion -->
+        <div class="mobile-item" role="button" tabindex="0" data-accordion>
+          About
+          <svg class="mobile-chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+        <div class="mobile-submenu" role="region">
+          <a href="https://mymmjdoctor.com/about-us/">About Us</a>
+          <a href="https://mymmjdoctor.com/reviews/">Reviews</a>
+          <a href="https://mymmjdoctor.com/contact-us/">Contact Us</a>
+        </div>
 
-      <div class="mmj-mob-item" data-toggle="mob-about">
-        About <span class="mmj-mchev" aria-hidden="true">▾</span>
-      </div>
-      <div class="mmj-mob-sub" id="mob-about">
-        <a href="https://mymmjdoctor.com/about/">About Us</a>
-        <a href="https://mymmjdoctor.com/reviews/">Reviews</a>
-        <a href="https://mymmjdoctor.com/contact/">Contact Us</a>
-      </div>
+        <!-- mobile action bar: email and call buttons -->
+        <div class="mobile-action-bar">
+          <a href="mailto:support@mymmdoctor.com" class="mobile-action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+              aria-hidden="true">
+              <path
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Email
+          </a>
+          <a href="tel:8882818758" class="mobile-action-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"
+              aria-hidden="true">
+              <path
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call Now
+          </a>
+        </div>
+      </nav>
+      <!-- /mobile-menu -->
+    </header>
+    <!-- /site-header -->
+  </div>
+  <!-- /site-wrap -->
 
-      <div class="mmj-mobile-btns-wrap">
-        <button>Email</button>
-        <button>Call Now</button>
-      </div>
+  <!-- gsap: entrance and stagger animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
 
-    </aside>
-    <!-- /mobile navigation -->
-
-  </header>
-  <!-- /main header -->
-
-</div>
-<!-- /header wrapper -->
+</html>
