@@ -1,35 +1,125 @@
 // state data — all supported states with landing page urls
 const STATE_DATA = [
-  { name: "Arizona", url: "https://mymmjdoctor.com/medical-marijuana-card-arizona/" },
-  { name: "Arkansas", url: "https://mymmjdoctor.com/medical-marijuana-card-arkansas/" },
-  { name: "California", url: "https://mymmjdoctor.com/medical-marijuana-card-california/" },
-  { name: "Connecticut", url: "https://mymmjdoctor.com/medical-marijuana-card-connecticut/" },
-  { name: "Delaware", url: "https://mymmjdoctor.com/medical-marijuana-card-delaware/" },
-  { name: "Florida", url: "https://mymmjdoctor.com/medical-marijuana-card-florida/" },
-  { name: "Georgia", url: "https://mymmjdoctor.com/medical-marijuana-card-georgia/" },
-  { name: "Illinois", url: "https://mymmjdoctor.com/medical-marijuana-card-illinois/" },
-  { name: "Iowa", url: "https://mymmjdoctor.com/medical-marijuana-card-iowa/" },
-  { name: "Louisiana", url: "https://mymmjdoctor.com/medical-marijuana-card-louisiana/" },
-  { name: "Maine", url: "https://mymmjdoctor.com/medical-marijuana-card-maine/" },
-  { name: "Maryland", url: "https://mymmjdoctor.com/medical-marijuana-card-maryland/" },
-  { name: "Massachusetts", url: "https://mymmjdoctor.com/medical-marijuana-card-massachusetts/" },
-  { name: "Michigan", url: "https://mymmjdoctor.com/medical-marijuana-card-michigan/" },
-  { name: "Minnesota", url: "https://mymmjdoctor.com/medical-marijuana-card-minnesota/" },
-  { name: "Missouri", url: "https://mymmjdoctor.com/medical-marijuana-card-missouri/" },
-  { name: "Montana", url: "https://mymmjdoctor.com/medical-marijuana-card-montana/" },
-  { name: "Nevada", url: "https://mymmjdoctor.com/medical-marijuana-card-nevada/" },
-  { name: "New Jersey", url: "https://mymmjdoctor.com/medical-marijuana-card-new-jersey/" },
-  { name: "New Mexico", url: "https://mymmjdoctor.com/medical-marijuana-card-new-mexico/" },
-  { name: "New York", url: "https://mymmjdoctor.com/medical-marijuana-card-new-york/" },
-  { name: "North Dakota", url: "https://mymmjdoctor.com/medical-marijuana-card-north-dakota/" },
-  { name: "Ohio", url: "https://mymmjdoctor.com/medical-marijuana-card-ohio/" },
-  { name: "Oklahoma", url: "https://mymmjdoctor.com/medical-marijuana-card-oklahoma/" },
-  { name: "Pennsylvania", url: "https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/" },
-  { name: "Texas", url: "https://mymmjdoctor.com/medical-marijuana-card-texas/" },
-  { name: "Vermont", url: "https://mymmjdoctor.com/medical-marijuana-card-vermont/" },
-  { name: "Virginia", url: "https://mymmjdoctor.com/medical-marijuana-card-virginia/" },
-  { name: "Washington DC", url: "https://mymmjdoctor.com/medical-marijuana-card-washington-dc/" },
-  { name: "West Virginia", url: "https://mymmjdoctor.com/medical-marijuana-card-west-virginia/" },
+  {
+    name: "Arizona",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-arizona/",
+  },
+  {
+    name: "Arkansas",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-arkansas/",
+  },
+  {
+    name: "California",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-california/",
+  },
+  {
+    name: "Connecticut",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-connecticut/",
+  },
+  {
+    name: "Delaware",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-delaware/",
+  },
+  {
+    name: "Florida",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-florida/",
+  },
+  {
+    name: "Georgia",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-georgia/",
+  },
+  {
+    name: "Illinois",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-illinois/",
+  },
+  {
+    name: "Iowa",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-iowa/",
+  },
+  {
+    name: "Louisiana",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-louisiana/",
+  },
+  {
+    name: "Maine",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-maine/",
+  },
+  {
+    name: "Maryland",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-maryland/",
+  },
+  {
+    name: "Massachusetts",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-massachusetts/",
+  },
+  {
+    name: "Michigan",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-michigan/",
+  },
+  {
+    name: "Minnesota",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-minnesota/",
+  },
+  {
+    name: "Missouri",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-missouri/",
+  },
+  {
+    name: "Montana",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-montana/",
+  },
+  {
+    name: "Nevada",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-nevada/",
+  },
+  {
+    name: "New Jersey",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-new-jersey/",
+  },
+  {
+    name: "New Mexico",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-new-mexico/",
+  },
+  {
+    name: "New York",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-new-york/",
+  },
+  {
+    name: "North Dakota",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-north-dakota/",
+  },
+  {
+    name: "Ohio",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-ohio/",
+  },
+  {
+    name: "Oklahoma",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-oklahoma/",
+  },
+  {
+    name: "Pennsylvania",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-pennsylvania/",
+  },
+  {
+    name: "Texas",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-texas/",
+  },
+  {
+    name: "Vermont",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-vermont/",
+  },
+  {
+    name: "Virginia",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-virginia/",
+  },
+  {
+    name: "Washington DC",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-washington-dc/",
+  },
+  {
+    name: "West Virginia",
+    url: "https://mymmjdoctor.com/medical-marijuana-card-west-virginia/",
+  },
 ];
 
 // analytics stub — logs to console for future integration
@@ -157,7 +247,7 @@ function initStateSearch() {
   if (!DOM.mobileSearch || !DOM.mobileStateGrid) return;
 
   DOM.mobileSearch.addEventListener("input", () =>
-    filterStateLinks(DOM.mobileSearch.value, DOM.mobileStateGrid)
+    filterStateLinks(DOM.mobileSearch.value, DOM.mobileStateGrid),
   );
   // stop events bubbling up to accordion toggle
   DOM.mobileSearch.addEventListener("click", (e) => e.stopPropagation());
@@ -185,7 +275,7 @@ function initScrollHandler() {
         scrollTicking = true;
       }
     },
-    { passive: true }
+    { passive: true },
   );
 
   // set correct initial state on load
@@ -208,7 +298,14 @@ function openMobileMenu() {
     gsap.fromTo(
       ".mobile-item",
       { opacity: 0, x: -16 },
-      { opacity: 1, x: 0, duration: 0.26, stagger: 0.05, ease: "power2.out", delay: 0.04 }
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.26,
+        stagger: 0.05,
+        ease: "power2.out",
+        delay: 0.04,
+      },
     );
   }
 
@@ -251,7 +348,13 @@ function initMobileAccordion() {
         gsap.fromTo(
           submenu.querySelectorAll("a, .state-link"),
           { opacity: 0, y: -5 },
-          { opacity: 1, y: 0, duration: 0.2, stagger: 0.03, ease: "power2.out" }
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.2,
+            stagger: 0.03,
+            ease: "power2.out",
+          },
         );
       }
     }
@@ -294,7 +397,14 @@ function initDesktopDropdowns() {
         gsap.fromTo(
           panel.querySelectorAll(".dropdown-item"),
           { opacity: 0, y: 8 },
-          { opacity: 1, y: 0, duration: 0.24, stagger: 0.04, ease: "power2.out", clearProps: "all" }
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.24,
+            stagger: 0.04,
+            ease: "power2.out",
+            clearProps: "all",
+          },
         );
       }
     }
@@ -305,10 +415,18 @@ function initDesktopDropdowns() {
     }
 
     // small delays prevent accidental open/close on fast mouse movements
-    li.addEventListener("mouseenter", () => { clearTimeout(timer); timer = setTimeout(open, 140); });
-    li.addEventListener("mouseleave", () => { clearTimeout(timer); timer = setTimeout(close, 180); });
+    li.addEventListener("mouseenter", () => {
+      clearTimeout(timer);
+      timer = setTimeout(open, 140);
+    });
+    li.addEventListener("mouseleave", () => {
+      clearTimeout(timer);
+      timer = setTimeout(close, 180);
+    });
     panel.addEventListener("mouseenter", () => clearTimeout(timer));
-    panel.addEventListener("mouseleave", () => { timer = setTimeout(close, 180); });
+    panel.addEventListener("mouseleave", () => {
+      timer = setTimeout(close, 180);
+    });
 
     // keyboard: enter/space toggles, arrow-down opens and focuses first item
     trigger.addEventListener("keydown", (e) => {
@@ -316,17 +434,33 @@ function initDesktopDropdowns() {
         e.preventDefault();
         trigger.getAttribute("aria-expanded") === "true" ? close() : open();
       }
-      if (e.key === "ArrowDown") { e.preventDefault(); open(); panel.querySelector(".dropdown-item")?.focus(); }
-      if (e.key === "Escape") { close(); trigger.focus(); }
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        open();
+        panel.querySelector(".dropdown-item")?.focus();
+      }
+      if (e.key === "Escape") {
+        close();
+        trigger.focus();
+      }
     });
 
     // keyboard: arrow keys navigate between panel items
     panel.addEventListener("keydown", (e) => {
       const items = [...panel.querySelectorAll(".dropdown-item")];
       const idx = items.indexOf(document.activeElement);
-      if (e.key === "ArrowDown" && idx < items.length - 1) { e.preventDefault(); items[idx + 1].focus(); }
-      if (e.key === "ArrowUp" && idx > 0) { e.preventDefault(); items[idx - 1].focus(); }
-      if (e.key === "Escape") { close(); trigger.focus(); }
+      if (e.key === "ArrowDown" && idx < items.length - 1) {
+        e.preventDefault();
+        items[idx + 1].focus();
+      }
+      if (e.key === "ArrowUp" && idx > 0) {
+        e.preventDefault();
+        items[idx - 1].focus();
+      }
+      if (e.key === "Escape") {
+        close();
+        trigger.focus();
+      }
     });
   });
 }
@@ -344,7 +478,13 @@ function initStateSelector() {
       gsap.fromTo(
         DOM.stateDropdown.querySelectorAll(".state-link"),
         { opacity: 0, x: -6 },
-        { opacity: 1, x: 0, duration: 0.22, stagger: 0.016, ease: "power1.out" }
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.22,
+          stagger: 0.016,
+          ease: "power1.out",
+        },
       );
     }
   }
@@ -355,29 +495,54 @@ function initStateSelector() {
   }
 
   // hover with delay to avoid accidental triggers
-  DOM.stateToggle.addEventListener("mouseenter", () => { clearTimeout(timer); timer = setTimeout(open, 140); });
-  DOM.stateSelector?.addEventListener("mouseleave", () => { clearTimeout(timer); timer = setTimeout(close, 180); });
+  DOM.stateToggle.addEventListener("mouseenter", () => {
+    clearTimeout(timer);
+    timer = setTimeout(open, 140);
+  });
+  DOM.stateSelector?.addEventListener("mouseleave", () => {
+    clearTimeout(timer);
+    timer = setTimeout(close, 180);
+  });
   DOM.stateDropdown.addEventListener("mouseenter", () => clearTimeout(timer));
-  DOM.stateDropdown.addEventListener("mouseleave", () => { timer = setTimeout(close, 180); });
+  DOM.stateDropdown.addEventListener("mouseleave", () => {
+    timer = setTimeout(close, 180);
+  });
 
   // click toggles dropdown
   DOM.stateToggle.addEventListener("click", () =>
-    DOM.stateDropdown.classList.contains("is-open") ? close() : open()
+    DOM.stateDropdown.classList.contains("is-open") ? close() : open(),
   );
 
   // keyboard: arrow-down opens and focuses first link
   DOM.stateToggle.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowDown") { e.preventDefault(); open(); DOM.stateDropdown.querySelector(".state-link")?.focus(); }
-    if (e.key === "Escape") { close(); }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      open();
+      DOM.stateDropdown.querySelector(".state-link")?.focus();
+    }
+    if (e.key === "Escape") {
+      close();
+    }
   });
 
   // keyboard: arrow keys navigate visible state links
   DOM.stateDropdown.addEventListener("keydown", (e) => {
-    const links = [...DOM.stateDropdown.querySelectorAll('.state-link:not([style*="none"])')];
+    const links = [
+      ...DOM.stateDropdown.querySelectorAll('.state-link:not([style*="none"])'),
+    ];
     const idx = links.indexOf(document.activeElement);
-    if (e.key === "ArrowDown" && idx < links.length - 1) { e.preventDefault(); links[idx + 1].focus(); }
-    if (e.key === "ArrowUp" && idx > 0) { e.preventDefault(); links[idx - 1].focus(); }
-    if (e.key === "Escape") { close(); DOM.stateToggle.focus(); }
+    if (e.key === "ArrowDown" && idx < links.length - 1) {
+      e.preventDefault();
+      links[idx + 1].focus();
+    }
+    if (e.key === "ArrowUp" && idx > 0) {
+      e.preventDefault();
+      links[idx - 1].focus();
+    }
+    if (e.key === "Escape") {
+      close();
+      DOM.stateToggle.focus();
+    }
   });
 }
 
@@ -385,40 +550,59 @@ function initStateSelector() {
 function initOutsideClick() {
   document.addEventListener("click", (e) => {
     // close mobile drawer on outside click
-    if (DOM.mobileMenu?.classList.contains("is-open") && !e.target.closest("#siteHeader")) {
+    if (
+      DOM.mobileMenu?.classList.contains("is-open") &&
+      !e.target.closest("#siteHeader")
+    ) {
       closeMobileMenu();
     }
     // close state dropdown on outside click
-    if (DOM.stateDropdown?.classList.contains("is-open") && !e.target.closest("#stateSelector")) {
+    if (
+      DOM.stateDropdown?.classList.contains("is-open") &&
+      !e.target.closest("#stateSelector")
+    ) {
       DOM.stateDropdown.classList.remove("is-open");
       DOM.stateToggle?.setAttribute("aria-expanded", "false");
     }
     // close nav dropdowns on outside click
     if (!e.target.closest(".nav-list > li")) {
-      document.querySelectorAll(".dropdown-panel.is-open").forEach((p) => p.classList.remove("is-open"));
-      document.querySelectorAll('.nav-trigger[aria-expanded="true"]').forEach((t) => t.setAttribute("aria-expanded", "false"));
+      document
+        .querySelectorAll(".dropdown-panel.is-open")
+        .forEach((p) => p.classList.remove("is-open"));
+      document
+        .querySelectorAll('.nav-trigger[aria-expanded="true"]')
+        .forEach((t) => t.setAttribute("aria-expanded", "false"));
     }
   });
 }
 
 // close mobile drawer on leftward swipe gesture
 function initSwipeClose() {
-  let startX = 0, startY = 0;
+  let startX = 0,
+    startY = 0;
 
-  DOM.mobileMenu?.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  }, { passive: true });
+  DOM.mobileMenu?.addEventListener(
+    "touchstart",
+    (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    },
+    { passive: true },
+  );
 
   // close if horizontal swipe > 50px and not a vertical scroll
-  DOM.mobileMenu?.addEventListener("touchend", (e) => {
-    const dx = e.changedTouches[0].clientX - startX;
-    const dy = Math.abs(e.changedTouches[0].clientY - startY);
-    if (dx < -50 && dy < 60) {
-      closeMobileMenu();
-      Analytics.track("mobile_menu_swipe_close");
-    }
-  }, { passive: true });
+  DOM.mobileMenu?.addEventListener(
+    "touchend",
+    (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = Math.abs(e.changedTouches[0].clientY - startY);
+      if (dx < -50 && dy < 60) {
+        closeMobileMenu();
+        Analytics.track("mobile_menu_swipe_close");
+      }
+    },
+    { passive: true },
+  );
 }
 
 // entrance animation: logo, nav, and actions fade in on load
@@ -427,16 +611,35 @@ function initEntrance() {
 
   gsap
     .timeline({ defaults: { ease: "power2.out" } })
-    .fromTo(".site-logo", { opacity: 0, x: -18 }, { opacity: 1, x: 0, duration: 0.45 })
-    .fromTo(".nav-trigger", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.07 }, "-=.28")
-    .fromTo(".header-actions", { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4 }, "-=.3")
-    .fromTo(".top-bar", { opacity: 0, y: -4 }, { opacity: 1, y: 0, duration: 0.35 }, "<");
+    .fromTo(
+      ".site-logo",
+      { opacity: 0, x: -18 },
+      { opacity: 1, x: 0, duration: 0.45 },
+    )
+    .fromTo(
+      ".nav-trigger",
+      { opacity: 0, y: -8 },
+      { opacity: 1, y: 0, duration: 0.35, stagger: 0.07 },
+      "-=.28",
+    )
+    .fromTo(
+      ".header-actions",
+      { opacity: 0, x: 18 },
+      { opacity: 1, x: 0, duration: 0.4 },
+      "-=.3",
+    )
+    .fromTo(
+      ".top-bar",
+      { opacity: 0, y: -4 },
+      { opacity: 1, y: 0, duration: 0.35 },
+      "<",
+    );
 }
 
 // track cta button clicks via analytics stub
 function initCtaTracking() {
   DOM.btnPrimary?.addEventListener("click", () =>
-    Analytics.track("cta_start_evaluation_clicked")
+    Analytics.track("cta_start_evaluation_clicked"),
   );
 }
 
