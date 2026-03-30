@@ -285,7 +285,7 @@ body.menu-open .site-header {
   gap: 18px;
 }
 
-.nav-list > li {
+.nav-list>li {
   position: relative;
 }
 
@@ -323,7 +323,7 @@ body.menu-open .site-header {
 }
 
 /* active / hover nav trigger */
-.nav-list > li:hover > .nav-trigger,
+.nav-list>li:hover>.nav-trigger,
 .nav-trigger[aria-expanded="true"] {
   color: var(--color-brand);
   transform: scale(1.04);
@@ -332,7 +332,7 @@ body.menu-open .site-header {
 }
 
 /* rotate chevron when dropdown is open */
-.nav-list > li:hover > .nav-trigger .nav-chevron,
+.nav-list>li:hover>.nav-trigger .nav-chevron,
 .nav-trigger[aria-expanded="true"] .nav-chevron {
   transform: rotate(180deg);
 }
@@ -380,7 +380,7 @@ body.menu-open .site-header {
 }
 
 /* reveal dropdown on hover or .is-open */
-.nav-list > li:hover .dropdown-panel,
+.nav-list>li:hover .dropdown-panel,
 .dropdown-panel.is-open {
   opacity: 1;
   visibility: visible;
@@ -496,6 +496,7 @@ body.menu-open .site-header {
 }
 
 @keyframes badgePulse {
+
   0%,
   100% {
     box-shadow: 0 2px 6px rgba(255, 59, 48, 0.35);
@@ -1148,6 +1149,19 @@ body.menu-open .mobile-contact-icons {
     box-shadow var(--transition);
 }
 
+/* safari placeholder font fix */
+.mobile-state-search::placeholder {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.mobile-state-search::-webkit-input-placeholder {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.mobile-state-search:-ms-input-placeholder {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
 .mobile-state-search:focus {
   border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(14, 129, 64, 0.1);
@@ -1309,6 +1323,7 @@ body.menu-open .mobile-contact-icons {
     top: 0;
     width: 100% !important;
   }
+
   .header-inner {
     height: 60px;
     padding: 0 16px;
